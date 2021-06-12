@@ -6,16 +6,29 @@ public class FootPrintMaker : MonoBehaviour
 {
     public GameObject footPrint;
     Vector3 lastStepPosition;
-    public float strideLength = 3;
+    public float strideLength;
     bool isRightFoot;
+
+    private void Start()
+    {
+        lastStepPosition = transform.position;
+    }
 
     private void Update()
     {
-        if(Vector3.Distance(transform.position, lastStepPosition) < strideLength)
+        if(Vector3.Distance(transform.position, lastStepPosition) > strideLength)
         {
             Vector3 footPrintPosition = transform.position;
-            Instantiate(footPrint, footPrintPosition, Quaternion.identity);
+            Transform t = Instantiate(footPrint, footPrintPosition, Quaternion.identity).transform;
+            t.transform.forward = transform.forward;
+            if(isRightFoot)
+                t.transform.position += t.transform.right;
+            else
+                t.transform.position += -t.transform.right;
+
             lastStepPosition = transform.position;
+
+            isRightFoot = !isRightFoot;
         }
     }
 }
