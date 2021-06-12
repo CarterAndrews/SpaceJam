@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public float moveSpeed;
     private PlayerInput playerInput;
     private InputAction moveAction;
+    private InputAction AttackAction;
     private InputAction StartPauseAction;
     private Rigidbody rb;
     private Vector3 worldMovementDirection;
     public Color evilBeanColor;
+    public bool isEvil = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,13 @@ public class Player : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["move"];
         StartPauseAction= playerInput.actions["StartPause"];
+        AttackAction= playerInput.actions["Attack"];
+        AttackAction.performed +=
+        context =>
+        {
+            if (context.interaction is PressInteraction && SceneManager.GetActiveScene().name == "Main")
+                Attack();
+        };
         rb = GetComponent<Rigidbody>();
         DontDestroyOnLoad(gameObject);
     }
@@ -42,6 +52,10 @@ public class Player : MonoBehaviour
             GameController.gameController.StartGame();
         }
     }
+    private void Attack()
+    {
+        print(gameObject.name + " attacks!");
+    }
     public void changeColor(Color col)
     {
         GetComponent<MeshRenderer>().material.color = col;
@@ -49,6 +63,7 @@ public class Player : MonoBehaviour
     public void makeEvilBean()
     {
         GetComponent<MeshRenderer>().material.color = evilBeanColor;
+        isEvil = true;
         //GetComponent<MeshRenderer>().enabled = false;
     }
 }

@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
     {
         players.Add(playerInput);
         playerInput.GetComponent<Player>().changeColor(playerColors[players.Count-1]);
+        playerInput.gameObject.name = "player" + players.Count.ToString();
     }
     private void OnPlayerLeft(PlayerInput playerInput)
     {
