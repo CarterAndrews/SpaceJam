@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     private Vector3 worldMovementDirection;
     public Color evilBeanColor;
     public bool isEvil = false;
+    public LayerMask playerMask;
+    private MeshRenderer mr;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +27,15 @@ public class Player : MonoBehaviour
     }
     private void Awake()
     {
+        if (!playerInput)
+            Initialize();
+    }
+    private void Initialize()
+    {
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["move"];
-        StartPauseAction= playerInput.actions["StartPause"];
-        AttackAction= playerInput.actions["Attack"];
+        StartPauseAction = playerInput.actions["StartPause"];
+        AttackAction = playerInput.actions["Attack"];
         AttackAction.performed +=
         context =>
         {
@@ -38,6 +45,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
         DontDestroyOnLoad(gameObject);
+        mr = GetComponent<MeshRenderer>();
     }
     private void FixedUpdate()
     {
@@ -60,14 +68,22 @@ public class Player : MonoBehaviour
     private void Attack()
     {
         print(gameObject.name + " attacks!");
+        Collider[] hits=Physics.OverlapBox(rb.position+transform.forward, Vector3.one * 0.5f, transform.rotation,playerMask);
+        foreach(Collider hit in hits)
+        {
+            if(hit.gameObject!=gameObject)
+            hit.gameObject.GetComponent<Player>().Die();
+        }
     }
     public void changeColor(Color col)
     {
-        GetComponent<MeshRenderer>().material.color = col;
+        if (!mr)
+            Initialize();
+        mr.material.color = col;
     }
     public void makeEvilBean()
     {
-        GetComponent<MeshRenderer>().material.color = evilBeanColor;
+        mr.material.color = evilBeanColor;
         isEvil = true;
         //GetComponent<MeshRenderer>().enabled = false;
     }
@@ -76,5 +92,16 @@ public class Player : MonoBehaviour
     {
         speedUpdate.RemoveAllListeners();
         AudioManager.Instance.RevokeRunEffect(gameObject);
+        mr.enabled = false;
+        playerInput.DeactivateInput();
+        rb.GetComponent<Collider>().enabled = false;
+        GameController.gameController.RegisterPlayerDeath(this);
+    }
+    public void reset()
+    {
+        isEvil = false;
+        mr.enabled = true;
+        playerInput.ActivateInput();
+        rb.GetComponent<Collider>().enabled = true;
     }
 }
