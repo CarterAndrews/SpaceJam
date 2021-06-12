@@ -49,9 +49,14 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        Vector3 camForward = Camera.main.transform.forward;
+        camForward.y = 0;
+        camForward.Normalize();
+        Vector3 camRight = Camera.main.transform.right;
+        camRight.y = 0;
+        camRight.Normalize();
         worldMovementDirection = moveAction.ReadValue<Vector2>();
-        worldMovementDirection.z = worldMovementDirection.y;
-        worldMovementDirection.y = 0;
+        worldMovementDirection = worldMovementDirection.y * camForward+worldMovementDirection.x*camRight;
         rb.velocity=worldMovementDirection * Time.fixedDeltaTime * moveSpeed;
         transform.LookAt(transform.position + worldMovementDirection);
 
