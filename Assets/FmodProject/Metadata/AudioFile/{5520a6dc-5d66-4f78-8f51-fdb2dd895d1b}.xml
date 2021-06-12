@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
-	<object class="AudioFile" id="{2e7d77d1-6041-4c80-8ef1-34a34f778df6}">
+	<object class="AudioFile" id="{5520a6dc-5d66-4f78-8f51-fdb2dd895d1b}">
 		<property name="assetPath">
-			<value>BakedSfx/exportedBubbles.wav</value>
+			<value>Sfx Sources/Roars/IntroRoar.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>15.568979166666667</value>
+			<value>3.9286041666666667</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{8c785623-c006-49d4-8312-d774f19cb1f6}</destination>
