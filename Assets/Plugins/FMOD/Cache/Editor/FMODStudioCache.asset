@@ -40,7 +40,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 2382077506635596480}
+  - {fileID: 1757398318047714138}
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
@@ -102,7 +102,7 @@ MonoBehaviour:
   Path: Assets/FmodProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637590733607904283
+  lastModified: 637590928199448075
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -128,8 +128,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 8674763774056604}
-  - {fileID: -8411687519997753889}
+  - {fileID: 8224973826260485273}
+  - {fileID: 5199979629195143610}
   MinDistance: 0
   MaxDistance: 0
   Length: 5750
@@ -156,7 +156,7 @@ MonoBehaviour:
   - {fileID: 1563627858982154446}
   StringsBanks:
   - {fileID: -3911884299193135328}
-  stringsBankWriteTime: 637590733607904283
+  stringsBankWriteTime: 637590928199448075
   cacheVersion: 6
 --- !u!114 &8674763774056604
 MonoBehaviour:
@@ -193,9 +193,29 @@ MonoBehaviour:
   Path: Assets/FmodProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637590733607884277
+  lastModified: 637590928199448075
   LoadResult: 0
   FileSizes: []
+  Exists: 1
+--- !u!114 &1757398318047714138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Chatter/Speed
+  m_EditorClassIdentifier: 
+  Name: Speed
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
   Exists: 1
 --- !u!114 &2382077506635596480
 MonoBehaviour:
@@ -281,6 +301,26 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &5199979629195143610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Softness
+  m_EditorClassIdentifier: 
+  Name: Softness
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &7683198049102690256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,4 +341,24 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 864
+  Exists: 1
+--- !u!114 &8224973826260485273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Speed
+  m_EditorClassIdentifier: 
+  Name: Speed
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
   Exists: 1
