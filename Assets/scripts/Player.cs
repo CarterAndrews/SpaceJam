@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private InputAction StartPauseAction;
     private Rigidbody rb;
     private Vector3 worldMovementDirection;
+    public Color evilBeanColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,11 +39,16 @@ public class Player : MonoBehaviour
     {
         if (StartPauseAction.ReadValue<float>() != 0)
         {
-            print("starting");
-            if (SceneManager.GetActiveScene().name == "join")
-            {
-                SceneManager.LoadScene("Main");
-            }
+            GameController.gameController.StartGame();
         }
+    }
+    public void changeColor(Color col)
+    {
+        GetComponent<MeshRenderer>().material.color = col;
+    }
+    public void makeEvilBean()
+    {
+        GetComponent<MeshRenderer>().material.color = evilBeanColor;
+        //GetComponent<MeshRenderer>().enabled = false;
     }
 }

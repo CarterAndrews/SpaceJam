@@ -87,3 +87,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 668508a14408e1044b6239ad44669fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.5360303, b: 0, a: 1}
+  - {r: 1, g: 0.93905693, b: 0, a: 1}
+  - {r: 0.40390563, g: 1, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.89781165, a: 1}
+  - {r: 0.10307217, g: 0, b: 1, a: 1}
+  - {r: 0.7011919, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.7087631, a: 1}
+  players: []
