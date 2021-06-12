@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="EncodableAsset" id="{6e9208f6-e2e5-4a6d-b980-ab94627db6e5}">
+		<property name="assetPath">
+			<value>Sfx Sources/Bubbles/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8c785623-c006-49d4-8312-d774f19cb1f6}</destination>
+		</relationship>
+	</object>
+</objects>
