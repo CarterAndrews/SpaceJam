@@ -43,6 +43,18 @@ ExportedObj/
 *.opendb
 *.VC.db
 
+# FMOD
+/Assets/FMODStudioCache.asset
+/Assets/FMODStudioCache.asset.meta
+fmod.log
+fmod_editor.log
+
+# FMOD studio (In folder FMOD)
+/FMOD/**.user
+/FMOD/**.unsaved
+/FMOD/**.cache
+/FMOD/**.restore
+
 # Unity3D generated meta files
 *.pidb.meta
 *.pdb.meta
