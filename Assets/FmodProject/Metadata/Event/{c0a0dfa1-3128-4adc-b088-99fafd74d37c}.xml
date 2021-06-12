@@ -128,7 +128,7 @@
 	</object>
 	<object class="EventSound" id="{57b19cb0-c0a9-4e04-9afa-b21c67f645dd}">
 		<property name="start">
-			<value>0.10000000000000001</value>
+			<value>0.0015024630541871989</value>
 		</property>
 		<property name="length">
 			<value>0.5</value>
@@ -161,7 +161,7 @@
 	</object>
 	<object class="EventSound" id="{956d86dd-1125-48b3-85b4-8a597c8184e2}">
 		<property name="start">
-			<value>0.10000000000000001</value>
+			<value>0.0015024630541871989</value>
 		</property>
 		<property name="length">
 			<value>0.5</value>
@@ -264,7 +264,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>-4</value>
+			<value>-12</value>
 		</property>
 		<property name="curveShape">
 			<value>0.246307045</value>
@@ -294,7 +294,7 @@
 			<value>0.99835796387520526</value>
 		</property>
 		<property name="value">
-			<value>3.81469727e-06</value>
+			<value>-8</value>
 		</property>
 	</object>
 </objects>

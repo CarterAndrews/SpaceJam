@@ -2,7 +2,10 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="AudioFile" id="{db627b0b-756b-49bd-ae46-4dd919bf953b}">
 		<property name="assetPath">
-			<value>Sfx Sources/Deepbubbles.wav</value>
+			<value>BakedSfx/Deepbubbles.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
