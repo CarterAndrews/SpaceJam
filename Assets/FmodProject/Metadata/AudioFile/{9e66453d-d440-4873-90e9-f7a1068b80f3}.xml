@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
-	<object class="AudioFile" id="{2e7d77d1-6041-4c80-8ef1-34a34f778df6}">
+	<object class="AudioFile" id="{9e66453d-d440-4873-90e9-f7a1068b80f3}">
 		<property name="assetPath">
-			<value>BakedSfx/exportedBubbles.wav</value>
+			<value>Sfx Sources/Swipe.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>15.568979166666667</value>
+			<value>0.14502083333333332</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{8c785623-c006-49d4-8312-d774f19cb1f6}</destination>
