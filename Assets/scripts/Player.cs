@@ -1,6 +1,8 @@
+using Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
@@ -12,6 +14,7 @@ public class Player : MonoBehaviour
     private InputAction AttackAction;
     private InputAction StartPauseAction;
     private Rigidbody rb;
+    private UnityEvent<float> speedUpdate = new UnityEvent<float>();
     private Vector3 worldMovementDirection;
     public Color evilBeanColor;
     public bool isEvil = false;
@@ -33,6 +36,7 @@ public class Player : MonoBehaviour
                 Attack();
         };
         rb = GetComponent<Rigidbody>();
+        AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
         DontDestroyOnLoad(gameObject);
     }
     private void FixedUpdate()
@@ -42,7 +46,8 @@ public class Player : MonoBehaviour
         worldMovementDirection.y = 0;
         rb.velocity=worldMovementDirection * Time.fixedDeltaTime * moveSpeed;
         transform.LookAt(transform.position + worldMovementDirection);
-        
+
+        speedUpdate?.Invoke(Mathf.Abs(worldMovementDirection.magnitude));
     }
     // Update is called once per frame
     void Update()
@@ -65,5 +70,11 @@ public class Player : MonoBehaviour
         GetComponent<MeshRenderer>().material.color = evilBeanColor;
         isEvil = true;
         //GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    public void Die() // This or ondestroyed, whatever you prefer
+    {
+        speedUpdate.RemoveAllListeners();
+        AudioManager.Instance.RevokeRunEffect(gameObject);
     }
 }

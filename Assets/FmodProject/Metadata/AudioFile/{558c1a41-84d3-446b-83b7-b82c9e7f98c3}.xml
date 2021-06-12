@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{558c1a41-84d3-446b-83b7-b82c9e7f98c3}">
+		<property name="assetPath">
+			<value>Sfx Sources/Bubbles/Bubble10.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.36275000000000002</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8c785623-c006-49d4-8312-d774f19cb1f6}</destination>
+		</relationship>
+	</object>
+</objects>

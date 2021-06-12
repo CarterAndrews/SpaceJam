@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{6c6bd646-c310-4f84-840b-08bf06b49eb2}">
+		<property name="name">
+			<value>Softness</value>
+		</property>
+		<relationship name="folder">
+			<destination>{58f69168-cae1-4eda-9e93-b04ff515d5da}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{f5434229-76f2-425b-9368-55b3e14e661a}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{f5434229-76f2-425b-9368-55b3e14e661a}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

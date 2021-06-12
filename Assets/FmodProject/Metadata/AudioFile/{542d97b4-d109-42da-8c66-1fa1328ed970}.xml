@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{542d97b4-d109-42da-8c66-1fa1328ed970}">
+		<property name="assetPath">
+			<value>Sfx Sources/Steps/SoftBig1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.2570416666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8c785623-c006-49d4-8312-d774f19cb1f6}</destination>
+		</relationship>
+	</object>
+</objects>
