@@ -7,7 +7,7 @@ Shader "Mod/mod-buffer"
     SubShader
     {
          ZWrite Off
-        Blend SrcAlpha OneMinusSrcAlpha
+        Blend SrcAlpha One
         LOD 100
 
         Pass
