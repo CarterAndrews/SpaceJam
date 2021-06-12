@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public static GameController gameController;
     public List<Color> playerColors;
     public List<PlayerInput> players;
+    private int livingPlayerCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,9 +51,33 @@ public class GameController : MonoBehaviour
         print("starting");
         if (SceneManager.GetActiveScene().name == "join")
         {
-            
+            livingPlayerCount = players.Count;
             SceneManager.LoadScene("Main");
             selectEvilBean();
+        }
+    }
+    public void RegisterPlayerDeath(Player dead)
+    {
+        if (dead.isEvil)
+        {
+            GameOver();
+        }
+        livingPlayerCount--;
+        if (livingPlayerCount <= 1)
+        {
+            GameOver();
+        }
+    }
+    private void GameOver()
+    {
+        SceneManager.LoadScene("join");
+        RespawnAllPlayers();
+    }
+    private void RespawnAllPlayers()
+    {
+        foreach(PlayerInput p in players)
+        {
+            p.GetComponent<Player>().reset();
         }
     }
 }
