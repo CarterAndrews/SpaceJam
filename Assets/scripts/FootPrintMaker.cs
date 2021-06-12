@@ -9,6 +9,11 @@ public class FootPrintMaker : MonoBehaviour
     public float strideLength;
     bool isRightFoot;
 
+    private void Start()
+    {
+        lastStepPosition = transform.position;
+    }
+
     private void Update()
     {
         if(Vector3.Distance(transform.position, lastStepPosition) > strideLength)
