@@ -38,11 +38,11 @@ MonoBehaviour:
   Path: Assets/FmodProject/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637590514888918215
+  lastModified: 637590530441802547
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 864
+    Value: 874
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -60,13 +60,13 @@ MonoBehaviour:
   - {fileID: -3911884299193135328}
   - {fileID: 1563627858982154446}
   EditorEvents:
-  - {fileID: 3775620117566963265}
+  - {fileID: 3378789383969080043}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1563627858982154446}
   StringsBanks:
   - {fileID: -3911884299193135328}
-  stringsBankWriteTime: 637590514888918215
+  stringsBankWriteTime: 637590530441802547
   cacheVersion: 6
 --- !u!114 &1563627858982154446
 MonoBehaviour:
@@ -83,10 +83,33 @@ MonoBehaviour:
   Path: Assets/FmodProject/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637590514888895671
+  lastModified: 637590530441787691
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &3378789383969080043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/WorldSfx/SampleEvent
+  m_EditorClassIdentifier: 
+  Path: event:/WorldSfx/SampleEvent
+  guid: 980480650e83584db520b1c0f843889e
+  Banks:
+  - {fileID: 1563627858982154446}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &3775620117566963265
 MonoBehaviour:
   m_ObjectHideFlags: 0

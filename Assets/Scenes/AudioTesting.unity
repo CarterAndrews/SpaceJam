@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b376698440b9040b04fe12396f9772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SampleEvent: event:/SampleEvent
+  SampleEvent: event:/WorldSfx/SampleEvent
 --- !u!1 &666991239
 GameObject:
   m_ObjectHideFlags: 0
