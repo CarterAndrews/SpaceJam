@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public List<Color> playerColors;
     public List<PlayerInput> players;
     private int livingPlayerCount;
+    public List<Transform> playerStartingSpawns;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +55,7 @@ public class GameController : MonoBehaviour
             livingPlayerCount = players.Count;
             SceneManager.LoadScene("Main");
             selectEvilBean();
+            SpawnPlayers();
         }
     }
     public void RegisterPlayerDeath(Player dead)
@@ -78,6 +80,18 @@ public class GameController : MonoBehaviour
         foreach(PlayerInput p in players)
         {
             p.GetComponent<Player>().reset();
+            SpawnPlayers();
+            
+        }
+    }
+    private void SpawnPlayers()
+    {
+        List<Transform> availiableSpawns = new List<Transform>(playerStartingSpawns);
+        foreach(PlayerInput p in players)
+        {
+            int index = Random.Range(0, availiableSpawns.Count);
+            p.transform.position = availiableSpawns[index].position;
+            availiableSpawns.RemoveAt(index);
         }
     }
 }

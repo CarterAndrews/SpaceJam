@@ -103,5 +103,6 @@ public class Player : MonoBehaviour
         mr.enabled = true;
         playerInput.ActivateInput();
         rb.GetComponent<Collider>().enabled = true;
+        
     }
 }
