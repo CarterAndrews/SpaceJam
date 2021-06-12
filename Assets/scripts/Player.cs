@@ -76,11 +76,18 @@ public class Player : MonoBehaviour
     private void Attack()
     {
         print(gameObject.name + " attacks!");
-        Collider[] hits=Physics.OverlapBox(rb.position+transform.forward, Vector3.one * 0.5f, transform.rotation,playerMask);
-        foreach(Collider hit in hits)
+        if (isEvil)
         {
-            if(hit.gameObject!=gameObject)
-            hit.gameObject.GetComponent<Player>().Die();
+            Collider[] hits = Physics.OverlapBox(rb.position + transform.forward, Vector3.one * 0.5f, transform.rotation, playerMask);
+            foreach (Collider hit in hits)
+            {
+                if (hit.gameObject != gameObject)
+                    hit.gameObject.GetComponent<Player>().Die();
+            }
+        }
+        else
+        {
+            m_gun.TryShoot();
         }
     }
     public void changeColor(Color col)
