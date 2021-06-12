@@ -98,9 +98,12 @@ public class Player : MonoBehaviour
     }
     public void makeEvilBean()
     {
+        if (!mr)
+            Initialize();
         mr.material.color = evilBeanColor;
         isEvil = true;
         //GetComponent<MeshRenderer>().enabled = false;
+        GetComponentInChildren<FootPrintMaker>().enabled = true;
     }
 
     public void Die() // This or ondestroyed, whatever you prefer
@@ -118,7 +121,7 @@ public class Player : MonoBehaviour
         mr.enabled = true;
         playerInput.ActivateInput();
         rb.GetComponent<Collider>().enabled = true;
-        
+        GetComponentInChildren<FootPrintMaker>().enabled = false;
     }
 
     private void SetupGun()
