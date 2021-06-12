@@ -10,6 +10,9 @@ namespace Audio
     {
         [FMODUnity.EventRef]
         public string InvisFootsteps, MovementChatter;
+        [FMODUnity.EventRef]
+        public string YetiRoar, YetiSwipe, Gunshot;
+
         public Dictionary<GameObject, FMODUnity.StudioEventEmitter> Runners = new Dictionary<GameObject, FMODUnity.StudioEventEmitter>();
 
         private void Start()
