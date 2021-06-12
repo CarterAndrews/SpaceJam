@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     public bool isEvil = false;
     public LayerMask playerMask;
     private MeshRenderer mr;
+    private Gun m_gun;
+    private Transform m_gunAttach;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour
         AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
         DontDestroyOnLoad(gameObject);
         mr = GetComponent<MeshRenderer>();
+        SetupGun();
     }
     private void FixedUpdate()
     {
@@ -104,5 +107,14 @@ public class Player : MonoBehaviour
         playerInput.ActivateInput();
         rb.GetComponent<Collider>().enabled = true;
         
+    }
+
+    private void SetupGun()
+    {
+        m_gunAttach = transform.Find("gun_attach");
+        var gunPrefab = Resources.Load<GameObject>("gun");
+        var gunObject = Instantiate(gunPrefab, m_gunAttach.position, transform.rotation);
+        m_gun = gunObject.GetComponent<Gun>();
+        m_gun.SetAttachPoint(m_gunAttach);
     }
 }
