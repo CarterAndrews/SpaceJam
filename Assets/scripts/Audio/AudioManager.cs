@@ -44,17 +44,12 @@ namespace Audio
                 Destroy(Runners[go]);
                 Runners.Remove(go);
             }
-            else
-            {
-                Debug.LogWarning("No run sfx on object: " + go.name + " are you sure you got this right?");
-            }
         }
         
 
         public void TriggerFootstep(Vector3 position, float speed, float materialHardness)
         {
             FMODUnity.RuntimeManager.PlayOneShot(InvisFootsteps, transform.position);
-
         }
 
     }

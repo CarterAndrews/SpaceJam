@@ -8,6 +8,7 @@ using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
+    public static Player Villain;
 
     public GameObject playerMesh;
     public float moveSpeed;
@@ -25,6 +26,9 @@ public class Player : MonoBehaviour
     private Gun m_gun;
     private Transform m_gunAttach;
     public int score = 0;
+
+    public float Velocity { get => rb.velocity.magnitude; }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +39,7 @@ public class Player : MonoBehaviour
         if (!playerInput)
             Initialize();
     }
-    private void Initialize()
+    private void Initialize(bool evilAudio = false)
     {
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["move"];
@@ -48,9 +52,15 @@ public class Player : MonoBehaviour
                 Attack();
         };
         rb = GetComponent<Rigidbody>();
-        AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
         DontDestroyOnLoad(gameObject);
         SetupGun();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.RevokeRunEffect(gameObject); // Just in case
+            if(!evilAudio)
+                AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
+        }
     }
     private void FixedUpdate()
     {
@@ -64,8 +74,8 @@ public class Player : MonoBehaviour
         worldMovementDirection = worldMovementDirection.y * camForward+worldMovementDirection.x*camRight;
         rb.velocity=worldMovementDirection * Time.fixedDeltaTime * moveSpeed;
         transform.LookAt(transform.position + worldMovementDirection);
-
-        speedUpdate?.Invoke(Mathf.Abs(worldMovementDirection.magnitude));
+        
+        speedUpdate?.Invoke(Velocity/moveSpeed);
     }
     // Update is called once per frame
     void Update()
@@ -105,18 +115,21 @@ public class Player : MonoBehaviour
         mr.enabled = false;
         playerMesh.SetActive(false);
         isEvil = true;
+        Villain = this;
         //GetComponent<MeshRenderer>().enabled = false;
         GetComponentInChildren<FootPrintMaker>().enabled = true;
     }
 
     public void Die() // This or ondestroyed, whatever you prefer
     {
-        speedUpdate.RemoveAllListeners();
-        AudioManager.Instance.RevokeRunEffect(gameObject);
         mr.enabled = false;
         playerInput.DeactivateInput();
         rb.GetComponent<Collider>().enabled = false;
         GameController.gameController.RegisterPlayerDeath(this);
+
+        speedUpdate.RemoveAllListeners();
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.RevokeRunEffect(gameObject);
     }
     public void reset()
     {
