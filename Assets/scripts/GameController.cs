@@ -33,14 +33,6 @@ public class GameController : MonoBehaviour
             players = new List<PlayerInput>();
         }
     }
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
     // Update is called once per frame
     void Update()
     {
@@ -50,7 +42,7 @@ public class GameController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "menu")
         {
-            SceneManager.LoadScene("join");
+            SceneNavigator.GoToScene("join");
         }
         players.Add(playerInput);
         playerInput.GetComponent<Player>().changeColor(playerColors[players.Count-1]);
@@ -94,7 +86,7 @@ public class GameController : MonoBehaviour
     {
         gameController.GetComponent<PlayerInputManager>().DisableJoining();
         livingPlayerCount = players.Count;
-        SceneManager.LoadScene("Main");
+        SceneNavigator.GoToScene("Main");
         selectEvilBean();
         SpawnPlayers();
     }
@@ -168,19 +160,13 @@ public class GameController : MonoBehaviour
             availiableSpawns.RemoveAt(index);
         }
     }
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "load")
-        {
-            SceneManager.LoadScene("menu");
-        }
-    }
+
     public static void LoadLobby()
     {
         gameController.GetComponent<PlayerInputManager>().EnableJoining();
         gameController.hunterWin.SetActive(false);
         gameController.monsterWin.SetActive(false);
-        SceneManager.LoadScene("join");
+        SceneNavigator.GoToScene("join");
         gameController.RespawnAllPlayers();
         gameController.SpawnLobby();
     }
