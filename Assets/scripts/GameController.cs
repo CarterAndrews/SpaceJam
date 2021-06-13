@@ -25,6 +25,14 @@ public class GameController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -93,5 +101,17 @@ public class GameController : MonoBehaviour
             p.transform.position = availiableSpawns[index].position;
             availiableSpawns.RemoveAt(index);
         }
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "load")
+        {
+            SceneManager.LoadScene("menu");
+        }
+    }
+    public static void LoadLobby()
+    {
+        SceneManager.LoadScene("join");
+        gameController.SpawnPlayers();
     }
 }
