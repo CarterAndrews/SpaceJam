@@ -105,12 +105,17 @@ public class Player : MonoBehaviour
         if (!m_canMove)
             rb.velocity = Vector3.zero;
     }
+    public GameObject slashPs;
     private void Attack()
     {
         //print(gameObject.name + " attacks!");
         if (isEvil)
         {
-            Collider[] hits = Physics.OverlapSphere(rb.position + transform.forward, 1, playerMask);
+            Vector3 attackPos = rb.position + transform.forward;
+            Transform ps = Instantiate(slashPs, attackPos, Quaternion.identity).transform;
+            ps.transform.forward = transform.forward;
+            Destroy(ps.gameObject, 1);
+            Collider[] hits = Physics.OverlapSphere(attackPos, 1, playerMask);
             foreach (Collider hit in hits)
             {
                 if (hit.gameObject != gameObject)
