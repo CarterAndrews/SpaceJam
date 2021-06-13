@@ -79,12 +79,16 @@ public class Player : MonoBehaviour
         if (!m_canMove)
             return;
         worldMovementDirection = moveAction.ReadValue<Vector2>();
-        worldMovementDirection = worldMovementDirection.y * camForward+worldMovementDirection.x*camRight;
-        rb.velocity=worldMovementDirection * Time.fixedDeltaTime * moveSpeed;
+        worldMovementDirection.z = worldMovementDirection.y;
+        worldMovementDirection.y = 0;
+        //worldMovementDirection = worldMovementDirection.y * camForward+worldMovementDirection.x*camRight;
+        rb.velocity=-worldMovementDirection * Time.fixedDeltaTime * moveSpeed;
 
         worldLookDirection = lookAction.ReadValue<Vector2>();
-        worldLookDirection = worldLookDirection.y * camForward + worldLookDirection.x * camRight;
-        transform.LookAt(transform.position + worldLookDirection);
+        worldLookDirection.z = worldLookDirection.y;
+        worldLookDirection.y = 0;
+        //worldLookDirection = worldLookDirection.y * camForward + worldLookDirection.x * camRight;
+        transform.LookAt(transform.position - worldLookDirection);
         
     }
     // Update is called once per frame
