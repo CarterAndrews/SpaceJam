@@ -6,7 +6,8 @@ public class Gun : MonoBehaviour
 {
     private Transform m_attachPoint;
     private GameObject m_chargeBall;
-
+    private GameObject m_blastPrefab;
+    CameraFx m_camFx;
     enum GunState
     {
         Idle,
@@ -20,6 +21,9 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         m_state = GunState.Idle;
+        m_chargeBall = transform.Find("art").Find("charge-ball").gameObject;
+        m_blastPrefab = Resources.Load<GameObject>("blast");
+        m_camFx = GameObject.FindObjectOfType<CameraFx>();
     }
 
     private void Update()
@@ -75,11 +79,27 @@ public class Gun : MonoBehaviour
         }
     }
 
+    const float kChargeDuration = .15f;
+    const float kMaxChargeBallRad = 10.0f;
+    float m_chargeProg = 0;
     private void DoCharge()
     {
         if (m_enteringState)
         {
             m_enteringState = false;
+            m_chargeProg = 0;
+        }
+
+        m_chargeProg += Time.deltaTime;
+        if(m_chargeProg > kChargeDuration)
+        {
+            m_chargeBall.transform.localScale = Vector3.zero;
+            GoToState(GunState.Blast);
+        }
+        else
+        {
+            float scale = Mathf.Sin( m_chargeProg * Mathf.PI / kChargeDuration ) * kMaxChargeBallRad;
+            m_chargeBall.transform.localScale = new Vector3(scale, scale, scale);
         }
     }
 
@@ -89,6 +109,10 @@ public class Gun : MonoBehaviour
         {
             m_enteringState = false;
         }
+        Instantiate(m_blastPrefab, m_chargeBall.transform.position, Quaternion.LookRotation(transform.forward,Vector3.up));
+        if(m_camFx)
+            m_camFx.ApplyShake(15.0f);
+        GoToState(GunState.Recharge);
     }
 
     private void DoRecharge()
@@ -97,5 +121,6 @@ public class Gun : MonoBehaviour
         {
             m_enteringState = false;
         }
+        GoToState(GunState.Idle);
     }
 }
