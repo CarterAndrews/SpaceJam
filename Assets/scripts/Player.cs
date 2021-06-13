@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
         //print(gameObject.name + " attacks!");
         if (isEvil)
         {
-            Collider[] hits = Physics.OverlapBox(rb.position + transform.forward, Vector3.one * 0.5f, transform.rotation, playerMask);
+            Collider[] hits = Physics.OverlapSphere(rb.position + transform.forward, 1, playerMask);
             foreach (Collider hit in hits)
             {
                 if (hit.gameObject != gameObject)
