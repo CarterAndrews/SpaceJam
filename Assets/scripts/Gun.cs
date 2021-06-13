@@ -54,7 +54,7 @@ public class Gun : MonoBehaviour
     {
         float rayDist = 100;
         RaycastHit hitInfo;
-        Ray ray = new Ray(m_chargeBall.transform.position - Vector3.up * .8f, transform.forward);
+        Ray ray = new Ray(transform.position + transform.forward * .2f, transform.forward);
         if (Physics.SphereCast(ray, .4f, out hitInfo, rayDist))
         {
             rayDist = hitInfo.distance;
@@ -86,7 +86,7 @@ public class Gun : MonoBehaviour
             return;
 
         transform.position = m_attachPoint.position;
-        transform.rotation = Quaternion.LookRotation(m_attachPoint.forward, Vector3.up);
+        transform.rotation = Quaternion.LookRotation(m_attachPoint.root.forward, Vector3.up);
     }
 
     private void GoToState(GunState newState)
@@ -137,7 +137,7 @@ public class Gun : MonoBehaviour
         {
             m_enteringState = false;
         }
-        Ray ray = new Ray(m_chargeBall.transform.position - Vector3.up*.8f, transform.forward);
+        Ray ray = new Ray(transform.position + transform.forward *.2f, transform.forward);
         float rayDist = 100;
         RaycastHit hitInfo;
         if (Physics.SphereCast(ray, .4f, out hitInfo, rayDist))

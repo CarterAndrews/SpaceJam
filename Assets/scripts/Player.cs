@@ -26,12 +26,12 @@ public class Player : MonoBehaviour
     public LayerMask playerMask;
     public MeshRenderer mr;
     private Gun m_gun;
-    private Transform m_gunAttach;
+    public Transform m_gunAttach;
     public int score = 0;
     public bool m_canMove = true;
-
-    public ParticleSystem m_snailTrail; 
-
+    public Animator m_playerAnimator;
+    private ParticleSystem m_snailTrail;
+    private Vector2 m_animVelocity;
     [HideInInspector]
     public float LastAnalogInput;
 
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_animVelocity = Vector2.zero;
     }
     private void Awake()
     {
@@ -90,6 +90,12 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Vector3 playerSpaceVelocity =  transform.InverseTransformVector(rb.velocity);
+        m_animVelocity = Vector2.Lerp(m_animVelocity, new Vector2(playerSpaceVelocity.x, playerSpaceVelocity.z), Time.fixedDeltaTime * 10.0f);
+        m_playerAnimator.SetFloat("zVel", m_animVelocity.y / moveSpeed);
+        m_playerAnimator.SetFloat("xVel", m_animVelocity.x / moveSpeed);
+
+
         Vector2 analogInput = moveAction.ReadValue<Vector2>();
         LastAnalogInput = analogInput.magnitude;
         speedUpdate?.Invoke(LastAnalogInput);
@@ -101,7 +107,7 @@ public class Player : MonoBehaviour
         worldMovementDirection.z = worldMovementDirection.y;
         worldMovementDirection.y = 0;
         //worldMovementDirection = worldMovementDirection.y * camForward+worldMovementDirection.x*camRight;
-        rb.velocity=-worldMovementDirection * Time.fixedDeltaTime * moveSpeed;
+        rb.velocity=-worldMovementDirection * moveSpeed;
 
         worldLookDirection = lookAction.ReadValue<Vector2>();
         worldLookDirection.z = worldLookDirection.y;
@@ -204,7 +210,7 @@ public class Player : MonoBehaviour
 
     private void SetupGun()
     {
-        m_gunAttach = transform.Find("gun_attach");
+        //m_gunAttach = transform.Find("gun_attach");
         var gunPrefab = Resources.Load<GameObject>("gun");
         var gunObject = Instantiate(gunPrefab, m_gunAttach.position, transform.rotation);
         GameObject.DontDestroyOnLoad(gunObject);
