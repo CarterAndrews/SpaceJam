@@ -8,6 +8,8 @@ using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
+
+    public GameObject playerMesh;
     public float moveSpeed;
     private PlayerInput playerInput;
     private InputAction moveAction;
@@ -100,7 +102,8 @@ public class Player : MonoBehaviour
     {
         if (!mr)
             Initialize();
-        mr.material.color = evilBeanColor;
+        mr.enabled = false;
+        playerMesh.SetActive(false);
         isEvil = true;
         //GetComponent<MeshRenderer>().enabled = false;
         GetComponentInChildren<FootPrintMaker>().enabled = true;
@@ -118,6 +121,8 @@ public class Player : MonoBehaviour
     public void reset()
     {
         isEvil = false;
+        playerMesh.SetActive(true);
+
         mr.enabled = true;
         playerInput.ActivateInput();
         rb.GetComponent<Collider>().enabled = true;
