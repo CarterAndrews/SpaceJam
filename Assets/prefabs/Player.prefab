@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5783776068685595780}
   - component: {fileID: 3701755549189325912}
   - component: {fileID: 3754407278557617036}
-  - component: {fileID: -8107136256581530685}
   - component: {fileID: 6181135992483505834}
+  - component: {fileID: 3792012810057683049}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1569744870412740342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4660425, y: 7.166189, z: -0.63541794}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3095681057593986423}
@@ -102,12 +102,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 6558217652961801667}
-  moveSpeed: 500
+  moveSpeed: 450
   evilBeanColor: {r: 0, g: 0, b: 0, a: 0}
   isEvil: 0
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
+  score: 0
 --- !u!54 &3754407278557617036
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -124,19 +125,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!65 &-8107136256581530685
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569744870412740342}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6181135992483505834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +155,20 @@ MonoBehaviour:
   m_DefaultActionMap: Movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!136 &3792012810057683049
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569744870412740342}
+  m_Material: {fileID: 13400000, guid: 1a946d76806ff3b46957c3dd357a64df, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8529893696575339679
 GameObject:
   m_ObjectHideFlags: 0
