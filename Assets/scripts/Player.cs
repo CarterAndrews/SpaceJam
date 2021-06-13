@@ -125,7 +125,8 @@ public class Player : MonoBehaviour
     {
         if (!mr)
             Initialize();
-        mr.material.color = col;
+        //mr.material.color = col;
+        mr.material.SetColor("ColorShift", col);
     }
     public void makeEvilBean()
     {
