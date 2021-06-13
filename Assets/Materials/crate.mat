@@ -26,23 +26,23 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Ao:
-        m_Texture: {fileID: 2800000, guid: 6beefdaff0220bb49b02fe9076f66a37, type: 3}
+        m_Texture: {fileID: 2800000, guid: f5f49a8d39aeff643a59eb561e67df0b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - BaseColor:
-        m_Texture: {fileID: 2800000, guid: 6d15df3184f360d41954c4b2d95a3d1b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7a9083ce24e4bf64d9144c2e4dd422fe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Metallic:
-        m_Texture: {fileID: 2800000, guid: b8e5ebe5215ff874e91697b6e4e772ff, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5295e95e44844d74a9dcaaa55eb497af, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Normal:
-        m_Texture: {fileID: 2800000, guid: c300783a4a37e7e4b9d24e44229e0239, type: 3}
+        m_Texture: {fileID: 2800000, guid: e3857c81e783c9447b835227b54b535d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Roughness:
-        m_Texture: {fileID: 2800000, guid: 8b15c4164bf45464bb3e3d44cf53f6a5, type: 3}
+        m_Texture: {fileID: 2800000, guid: a82ba9e61df77d34a8cbfb7a2c05d20a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
