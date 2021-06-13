@@ -14,11 +14,13 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     private PlayerInput playerInput;
     private InputAction moveAction;
+    private InputAction lookAction;
     private InputAction AttackAction;
     private InputAction StartPauseAction;
     private Rigidbody rb;
     private UnityEvent<float> speedUpdate = new UnityEvent<float>();
     private Vector3 worldMovementDirection;
+    private Vector3 worldLookDirection;
     public Color evilBeanColor;
     public bool isEvil = false;
     public LayerMask playerMask;
@@ -28,7 +30,8 @@ public class Player : MonoBehaviour
     public int score = 0;
     public bool m_canMove = true;
     public float Velocity { get => rb.velocity.magnitude; }
-
+    Vector3 camForward;
+    Vector3 camRight;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,7 @@ public class Player : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["move"];
+        lookAction = playerInput.actions["Look"];
         StartPauseAction = playerInput.actions["StartPause"];
         AttackAction = playerInput.actions["Attack"];
         AttackAction.performed +=
@@ -54,7 +58,12 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         DontDestroyOnLoad(gameObject);
         SetupGun();
-
+        camForward = Camera.main.transform.forward;
+        camForward.y = 0;
+        camForward.Normalize();
+        camRight = Camera.main.transform.right;
+        camRight.y = 0;
+        camRight.Normalize();
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.RevokeRunEffect(gameObject); // Just in case
@@ -66,17 +75,13 @@ public class Player : MonoBehaviour
     {
         if (!m_canMove)
             return;
-
-        Vector3 camForward = Camera.main.transform.forward;
-        camForward.y = 0;
-        camForward.Normalize();
-        Vector3 camRight = Camera.main.transform.right;
-        camRight.y = 0;
-        camRight.Normalize();
         worldMovementDirection = moveAction.ReadValue<Vector2>();
         worldMovementDirection = worldMovementDirection.y * camForward+worldMovementDirection.x*camRight;
         rb.velocity=worldMovementDirection * Time.fixedDeltaTime * moveSpeed;
-        transform.LookAt(transform.position + worldMovementDirection);
+
+        worldLookDirection = lookAction.ReadValue<Vector2>();
+        worldLookDirection = worldLookDirection.y * camForward + worldLookDirection.x * camRight;
+        transform.LookAt(transform.position + worldLookDirection);
         
         speedUpdate?.Invoke(Velocity);
     }
