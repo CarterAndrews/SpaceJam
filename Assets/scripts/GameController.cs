@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     public GameObject hunterWin;
     public GameObject monsterWin;
     public GameObject pauseScreen;
-    
+    public GameObject ScoreUI;
     // Start is called before the first frame update
     void Start()
     {
