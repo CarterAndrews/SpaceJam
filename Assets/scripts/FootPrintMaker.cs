@@ -1,3 +1,4 @@
+using Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,11 @@ public class FootPrintMaker : MonoBehaviour
             lastStepPosition = transform.position;
 
             isRightFoot = !isRightFoot;
+
+            if (AudioManager.Instance != null && Player.Villain!=null)
+            {
+                AudioManager.Instance.TriggerFootstep(footPrintPosition, Player.Villain.Velocity/Player.Villain.moveSpeed, 0.6f);
+            }
         }
     }
 }
