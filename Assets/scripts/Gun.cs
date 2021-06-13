@@ -73,6 +73,11 @@ public class Gun : MonoBehaviour
             return;
 
         GoToState(GunState.Charge);
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.GUNSHOT, transform.position);
+        }
     }
 
     private void UpdateMovement()
@@ -151,10 +156,7 @@ public class Gun : MonoBehaviour
         if (m_camFx)
             m_camFx.ApplyShake(15.0f);
 
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.GUNSHOT, transform.position);
-        }
+
 
 
         GoToState(GunState.Recharge);
@@ -170,6 +172,7 @@ public class Gun : MonoBehaviour
         {
             m_enteringState = false;
             m_rechargeTimer = 0;
+            m_guideObj.SetActive(false);
         }
         m_rechargeTimer += Time.deltaTime;
 
@@ -178,6 +181,7 @@ public class Gun : MonoBehaviour
 
         if (m_rechargeTimer > kRechargeTime)
         {
+            m_guideObj.SetActive(true);
             GoToState(GunState.Idle);
         }
     }

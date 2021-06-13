@@ -60,7 +60,11 @@
 			<destination>{bdc6ce3f-8ff0-474c-a1d0-8dfff924e07d}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{513e3900-ca84-4b8d-ae10-aaddc783216a}" />
+	<object class="EventAutomatableProperties" id="{513e3900-ca84-4b8d-ae10-aaddc783216a}">
+		<property name="priority">
+			<value>3</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{3be46f5f-5851-43d3-883f-99d48021d780}" />
 	<object class="GroupTrack" id="{7ffa7651-8b23-4281-a3c8-e56d2bb81c8f}">
 		<relationship name="mixerGroup">
@@ -114,6 +118,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{0e23a661-0c69-441d-9bbc-1d9e71d0d969}">
+		<property name="volume">
+			<value>5.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{241cf748-442f-4893-af08-0388e430a534}</destination>
 		</relationship>
@@ -284,7 +291,8 @@
 	<object class="MixerBusEffectChain" id="{241cf748-442f-4893-af08-0388e430a534}">
 		<relationship name="effects">
 			<destination>{3a08a888-6260-415f-bb20-c46c25c714fa}</destination>
-			<destination>{bea1db74-9255-45d4-b5ec-8159961cfea2}</destination>
+			<destination>{719fc623-bd68-4aa7-a654-c8efca4a279b}</destination>
+			<destination>{436b41e0-d12a-4131-8680-ef53a270f750}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e735767b-a0bb-41a5-b200-1d412bafdb58}" />
@@ -400,7 +408,19 @@
 	</object>
 	<object class="MixerBusPanner" id="{0fc6ab30-da57-43bb-835a-e616759aff6b}" />
 	<object class="MixerBusFader" id="{3a08a888-6260-415f-bb20-c46c25c714fa}" />
-	<object class="SpatialiserEffect" id="{bea1db74-9255-45d4-b5ec-8159961cfea2}" />
+	<object class="SpatialiserEffect" id="{719fc623-bd68-4aa7-a654-c8efca4a279b}">
+		<property name="minimumDistance">
+			<value>0</value>
+		</property>
+		<property name="maximumDistance">
+			<value>80</value>
+		</property>
+	</object>
+	<object class="GainEffect" id="{436b41e0-d12a-4131-8680-ef53a270f750}">
+		<property name="gain">
+			<value>7.5</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{db911e0a-94e0-48cf-a6db-a6ea59e0feb7}" />
 	<object class="AutomationCurve" id="{656c1357-d3c0-48f2-a5c5-6129bc34c9cb}">
 		<relationship name="parameter">
