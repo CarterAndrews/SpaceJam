@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +17,8 @@ namespace Audio
         public string YetiRoar, YetiSwipe, Gunshot;
 
         public Dictionary<GameObject, FMODUnity.StudioEventEmitter> Runners = new Dictionary<GameObject, FMODUnity.StudioEventEmitter>();
+
+        private float _maxConventionalSpeed = .02f; // Scuffed af
 
         protected override void Awake()
         {
@@ -34,7 +38,7 @@ namespace Audio
                 Destroy(go.GetComponent<FMODUnity.StudioEventEmitter>());
             }
             Runners[go] = emitter;
-            speedUpdate.AddListener((speed) => { emitter.SetParameter("Speed", speed); });
+            speedUpdate.AddListener((speed) => { emitter.SetParameter("Speed", speed/ _maxConventionalSpeed); });
         }
         public void RevokeRunEffect(GameObject go)
         {
@@ -49,7 +53,13 @@ namespace Audio
 
         public void TriggerFootstep(Vector3 position, float speed, float materialHardness)
         {
+            speed /= _maxConventionalSpeed;
             FMODUnity.RuntimeManager.PlayOneShot(InvisFootsteps, transform.position);
+            EventInstance e = FMODUnity.RuntimeManager.CreateInstance(InvisFootsteps);
+            e.set3DAttributes(RuntimeUtils.To3DAttributes(position));
+            e.setParameterByName("Speed", speed);
+            e.start();
+            e.release();
         }
 
     }

@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
         rb.velocity=worldMovementDirection * Time.fixedDeltaTime * moveSpeed;
         transform.LookAt(transform.position + worldMovementDirection);
         
-        speedUpdate?.Invoke(Velocity/moveSpeed);
+        speedUpdate?.Invoke(Velocity);
     }
     // Update is called once per frame
     void Update()
