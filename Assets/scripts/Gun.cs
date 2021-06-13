@@ -144,6 +144,9 @@ public class Gun : MonoBehaviour
         {
             var hitObject = hitInfo.collider.gameObject;
             Player otherPlayer = hitObject.GetComponent<Player>();
+            Destructable dest = hitObject.GetComponent<Destructable>();
+            if (dest)
+                dest.Destruct();
             if(null != otherPlayer && otherPlayer.isEvil)
             {
                 otherPlayer.Die();
