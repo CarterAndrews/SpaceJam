@@ -172,6 +172,9 @@ public class Gun : MonoBehaviour
         if ((rayDist = GetClosestHitDist(ref hitObject)) < rayDist)
         {
             Player otherPlayer = hitObject.GetComponent<Player>();
+            Destructable dest = hitObject.GetComponent<Destructable>();
+            if (dest)
+                dest.Destruct();
             if(null != otherPlayer && otherPlayer.isEvil)
             {
                 otherPlayer.Die();
