@@ -1,3 +1,4 @@
+using Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -128,6 +129,13 @@ public class Gun : MonoBehaviour
         blastObj.transform.localScale = new Vector3(1,1,rayDist);
         if (m_camFx)
             m_camFx.ApplyShake(15.0f);
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.GUNSHOT, transform.position);
+        }
+
+
         GoToState(GunState.Recharge);
        
     }
