@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
     }
     private void Attack()
     {
-        print(gameObject.name + " attacks!");
+        //print(gameObject.name + " attacks!");
         if (isEvil)
         {
             Collider[] hits = Physics.OverlapBox(rb.position + transform.forward, Vector3.one * 0.5f, transform.rotation, playerMask);
@@ -135,6 +135,7 @@ public class Player : MonoBehaviour
         m_gunAttach = transform.Find("gun_attach");
         var gunPrefab = Resources.Load<GameObject>("gun");
         var gunObject = Instantiate(gunPrefab, m_gunAttach.position, transform.rotation);
+        GameObject.DontDestroyOnLoad(gunObject);
         m_gun = gunObject.GetComponent<Gun>();
         m_gun.SetAttachPoint(m_gunAttach);
     }
