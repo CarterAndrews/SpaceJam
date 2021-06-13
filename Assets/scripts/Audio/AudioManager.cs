@@ -19,7 +19,7 @@ namespace Audio
 
         public Dictionary<GameObject, FMODUnity.StudioEventEmitter> Runners = new Dictionary<GameObject, FMODUnity.StudioEventEmitter>();
 
-        private float _maxConventionalSpeed = .9f; // Scuffed af
+        private float _maxConventionalSpeed = 12f; // Scuffed af
 
         protected override void Awake()
         {
@@ -39,7 +39,8 @@ namespace Audio
                 Destroy(go.GetComponent<StudioEventEmitter>());
             }
             Runners[go] = emitter;
-            speedUpdate.AddListener((speed) => { emitter.SetParameter("Speed", speed/ _maxConventionalSpeed); });
+            speedUpdate.AddListener((speed) => {
+                Debug.Log("Players: " + speed); emitter.SetParameter("Speed", speed); });
         }
         public void RevokeRunEffect(GameObject go)
         {
@@ -55,13 +56,13 @@ namespace Audio
 
         public void TriggerFootstep(Vector3 position, float speed, float materialHardness)
         {
-            speed /= _maxConventionalSpeed;
             RuntimeManager.PlayOneShot(InvisFootsteps, transform.position);
             EventInstance e = RuntimeManager.CreateInstance(InvisFootsteps);
             e.set3DAttributes(RuntimeUtils.To3DAttributes(position));
             e.setParameterByName("Speed", speed);
             e.start();
             e.release();
+            Debug.Log("Monster: " + speed);
         }
 
         public void TriggerSound(TriggerSoundType sound, Vector3 position)

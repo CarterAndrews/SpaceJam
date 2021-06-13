@@ -34,7 +34,7 @@ public class FootPrintMaker : MonoBehaviour
 
             if (AudioManager.Instance != null && Player.Villain!=null)
             {
-                AudioManager.Instance.TriggerFootstep(footPrintPosition, Player.Villain.Velocity/Player.Villain.moveSpeed, 0.6f);
+                AudioManager.Instance.TriggerFootstep(footPrintPosition, Player.Villain.LastAnalogInput, 0.6f);
             }
         }
     }

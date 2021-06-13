@@ -29,8 +29,12 @@ public class Player : MonoBehaviour
     private Transform m_gunAttach;
     public int score = 0;
     public bool m_canMove = true;
+
     public ParticleSystem m_snailTrail; 
-    public float Velocity { get => rb.velocity.magnitude; }
+
+    [HideInInspector]
+    public float LastAnalogInput;
+
     Vector3 camForward;
     Vector3 camRight;
     // Start is called before the first frame update
@@ -80,11 +84,14 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        speedUpdate?.Invoke(Velocity);
+        Vector2 analogInput = moveAction.ReadValue<Vector2>();
+        LastAnalogInput = analogInput.magnitude;
+        speedUpdate?.Invoke(LastAnalogInput);
 
         if (!m_canMove)
             return;
-        worldMovementDirection = moveAction.ReadValue<Vector2>();
+
+        worldMovementDirection = analogInput;
         worldMovementDirection.z = worldMovementDirection.y;
         worldMovementDirection.y = 0;
         //worldMovementDirection = worldMovementDirection.y * camForward+worldMovementDirection.x*camRight;
