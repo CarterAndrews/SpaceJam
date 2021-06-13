@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerManager : MonoBehaviour
+using UnityEngine.SceneManagement;
+public class TitleScreenManager : MonoBehaviour
 {
     
     // Start is called before the first frame update
@@ -10,7 +10,10 @@ public class PlayerManager : MonoBehaviour
     {
         
     }
-
+    public void GoToLobby()
+    {
+        SceneManager.LoadScene("join");
+    }
     // Update is called once per frame
     void Update()
     {

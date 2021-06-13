@@ -11,10 +11,12 @@ public class GameController : MonoBehaviour
     public List<PlayerInput> players;
     private int livingPlayerCount;
     public List<Transform> playerStartingSpawns;
+    public List<Transform> lobbySpawns;
     private bool isGameOver;
     public GameObject hunterWin;
     public GameObject monsterWin;
     public GameObject pauseScreen;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class GameController : MonoBehaviour
         {
             gameController = this;
             DontDestroyOnLoad(gameObject);
+            players = new List<PlayerInput>();
         }
     }
     private void OnEnable()
@@ -45,9 +48,14 @@ public class GameController : MonoBehaviour
     }
     private void OnPlayerJoined(PlayerInput playerInput)
     {
+        if (SceneManager.GetActiveScene().name == "menu")
+        {
+            SceneManager.LoadScene("join");
+        }
         players.Add(playerInput);
         playerInput.GetComponent<Player>().changeColor(playerColors[players.Count-1]);
         playerInput.gameObject.name = "player" + players.Count.ToString();
+        
     }
     private void OnPlayerLeft(PlayerInput playerInput)
     {
@@ -84,6 +92,7 @@ public class GameController : MonoBehaviour
     }
     public void StartGame()
     {
+        gameController.GetComponent<PlayerInputManager>().DisableJoining();
         livingPlayerCount = players.Count;
         SceneManager.LoadScene("Main");
         selectEvilBean();
@@ -145,6 +154,16 @@ public class GameController : MonoBehaviour
             availiableSpawns.RemoveAt(index);
         }
     }
+    private void SpawnLobby()
+    {
+        List<Transform> availiableSpawns = new List<Transform>(lobbySpawns);
+        foreach (PlayerInput p in players)
+        {
+            int index = Random.Range(0, availiableSpawns.Count);
+            p.transform.position = availiableSpawns[index].position;
+            availiableSpawns.RemoveAt(index);
+        }
+    }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "load")
@@ -154,10 +173,11 @@ public class GameController : MonoBehaviour
     }
     public static void LoadLobby()
     {
+        gameController.GetComponent<PlayerInputManager>().EnableJoining();
         gameController.hunterWin.SetActive(false);
         gameController.monsterWin.SetActive(false);
         SceneManager.LoadScene("join");
         gameController.RespawnAllPlayers();
-        gameController.SpawnPlayers();
+        gameController.SpawnLobby();
     }
 }

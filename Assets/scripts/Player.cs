@@ -82,6 +82,12 @@ public class Player : MonoBehaviour
             AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
         }
     }
+
+    private void Update()
+    {
+        timeSinceLastAttack += Time.deltaTime;
+    }
+
     private void FixedUpdate()
     {
         Vector2 analogInput = moveAction.ReadValue<Vector2>();
@@ -111,11 +117,17 @@ public class Player : MonoBehaviour
             rb.velocity = Vector3.zero;
     }
     public GameObject slashPs;
+    float timeSinceLastAttack;
     private void Attack()
     {
         //print(gameObject.name + " attacks!");
         if (isEvil)
         {
+            if (timeSinceLastAttack < 0.8f)
+                return;
+
+            timeSinceLastAttack = 0;
+
             Vector3 attackPos = rb.position + transform.forward;
             Transform ps = Instantiate(slashPs, attackPos, Quaternion.identity).transform;
             ps.transform.forward = transform.forward;
@@ -128,6 +140,11 @@ public class Player : MonoBehaviour
                     hit.gameObject.GetComponent<Player>().Die();
                     score++;
                 }
+            }
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.YETI_SWIPE, transform.position);
             }
         }
         else
