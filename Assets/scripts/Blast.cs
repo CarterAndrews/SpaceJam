@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Blast : MonoBehaviour
 {
-    LineRenderer m_lineRenderer;
+    public LineRenderer m_lineRenderer;
     void Start()
     {
         m_lineRenderer = GetComponent<LineRenderer>();
