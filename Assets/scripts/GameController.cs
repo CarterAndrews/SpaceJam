@@ -91,6 +91,7 @@ public class GameController : MonoBehaviour
         if (dead.isEvil)
         {
             GameOver();
+            dead.score--;
         }
         livingPlayerCount--;
         if (livingPlayerCount <= 1)
