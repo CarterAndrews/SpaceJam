@@ -49,17 +49,46 @@ public class Gun : MonoBehaviour
 
         UpdateGuideLaser();
     }
+    private float GetClosestHitDist()
+    {
+        GameObject obj = null;
+        return GetClosestHitDist(ref obj);
+
+    }
+    private float GetClosestHitDist(ref GameObject obj)
+    {
+        float rayDist = 100;
+        Ray ray = new Ray(transform.position - Vector3.up * .8f - transform.forward * .5f, transform.forward);
+        RaycastHit[] hits = Physics.SphereCastAll(ray, .4f, rayDist);
+        RaycastHit closestHit = new RaycastHit();
+        float closestdist = rayDist + 5;
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.gameObject == m_attachPoint.root.gameObject)
+            {
+                continue;
+            }
+            else
+            {
+                if (hit.distance < closestdist)
+                {
+                    closestdist = hit.distance;
+                    closestHit = hit;
+                }
+            }
+        }
+
+        if (closestHit.collider != null)
+        {
+            rayDist = closestHit.distance;
+            obj = closestHit.collider.gameObject;
+        }
+        return rayDist;
+    }
 
     public void UpdateGuideLaser()
     {
-        float rayDist = 100;
-        RaycastHit hitInfo;
-        Ray ray = new Ray(transform.position + transform.forward * .2f, transform.forward);
-        if (Physics.SphereCast(ray, .4f, out hitInfo, rayDist))
-        {
-            rayDist = hitInfo.distance;
-        }
-        m_guideObj.transform.localScale = new Vector3(1, 1, rayDist);
+        m_guideObj.transform.localScale = new Vector3(1, 1, GetClosestHitDist());
     }
 
     public void SetAttachPoint(Transform transform)
@@ -137,13 +166,15 @@ public class Gun : MonoBehaviour
         {
             m_enteringState = false;
         }
-        Ray ray = new Ray(transform.position + transform.forward *.2f, transform.forward);
-        float rayDist = 100;
-        RaycastHit hitInfo;
-        if (Physics.SphereCast(ray, .4f, out hitInfo, rayDist))
+
+        float rayDist = 99;
+        GameObject hitObject = null;
+        if ((rayDist = GetClosestHitDist(ref hitObject)) < rayDist)
         {
-            var hitObject = hitInfo.collider.gameObject;
             Player otherPlayer = hitObject.GetComponent<Player>();
+            Destructable dest = hitObject.GetComponent<Destructable>();
+            if (dest)
+                dest.Destruct();
             if(null != otherPlayer && otherPlayer.isEvil)
             {
                 otherPlayer.Die();
@@ -154,8 +185,6 @@ public class Gun : MonoBehaviour
                         AudioManager.Instance.TriggerSoundAttached(AudioManager.TriggerSoundType.VICTORY_CHEER, runner.Value.gameObject);
                 }
             }
-
-            rayDist = hitInfo.distance;
         }
         var blastObj = Instantiate(m_blastPrefab, m_chargeBall.transform.position, Quaternion.LookRotation(transform.forward,Vector3.up));
         blastObj.transform.localScale = new Vector3(1,1,rayDist);

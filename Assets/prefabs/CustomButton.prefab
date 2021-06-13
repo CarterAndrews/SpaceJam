@@ -404,8 +404,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 13847095ad2741e4e9dca67f1533e4cd, type: 2}
-  m_sharedMaterial: {fileID: -8066712691050504443, guid: 13847095ad2741e4e9dca67f1533e4cd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
+  m_sharedMaterial: {fileID: -7680962103764369800, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
