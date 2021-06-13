@@ -1,3 +1,4 @@
+using Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -118,6 +119,11 @@ public class GameController : MonoBehaviour
                 isGameOver = true;
 
             }
+        }
+
+        if (isGameOver)
+        {
+            AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.YETI_ROAR);
         }
     }
     private void RespawnAllPlayers()

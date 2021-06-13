@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
     public bool m_canMove = true;
 
     public ParticleSystem m_snailTrail; 
-    public float Velocity { get => rb.velocity.magnitude; }
 
     [HideInInspector]
     public float LastAnalogInput;
