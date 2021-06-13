@@ -109,8 +109,23 @@ public class Gun : MonoBehaviour
         {
             m_enteringState = false;
         }
-        Instantiate(m_blastPrefab, m_chargeBall.transform.position, Quaternion.LookRotation(transform.forward,Vector3.up));
-        if(m_camFx)
+        Ray ray = new Ray(m_chargeBall.transform.position, transform.forward);
+        float rayDist = 100;
+        RaycastHit hitInfo;
+        if (Physics.SphereCast(ray, .2f, out hitInfo, rayDist))
+        {
+            var hitObject = hitInfo.collider.gameObject;
+            Player otherPlayer = hitObject.GetComponent<Player>();
+            if(null != otherPlayer && otherPlayer.isEvil)
+            {
+                otherPlayer.Die();
+            }
+
+            rayDist = hitInfo.distance;
+        }
+        var blastObj = Instantiate(m_blastPrefab, m_chargeBall.transform.position, Quaternion.LookRotation(transform.forward,Vector3.up));
+        blastObj.transform.localScale = new Vector3(1,1,rayDist);
+        if (m_camFx)
             m_camFx.ApplyShake(15.0f);
         GoToState(GunState.Recharge);
     }
