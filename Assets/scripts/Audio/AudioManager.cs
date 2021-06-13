@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Utility;
 
 namespace Audio
@@ -15,8 +16,11 @@ namespace Audio
 
         public Dictionary<GameObject, FMODUnity.StudioEventEmitter> Runners = new Dictionary<GameObject, FMODUnity.StudioEventEmitter>();
 
-        private void Start()
+        protected override void Awake()
         {
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.transform.position = transform.position;
+            base.Awake();
         }
 
         public void SetupRunEffect(GameObject go, UnityEvent<float> speedUpdate)
