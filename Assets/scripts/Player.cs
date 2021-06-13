@@ -141,6 +141,11 @@ public class Player : MonoBehaviour
                     score++;
                 }
             }
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.YETI_SWIPE, transform.position);
+            }
         }
         else
         {
