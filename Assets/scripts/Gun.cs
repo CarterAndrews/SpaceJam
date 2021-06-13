@@ -162,8 +162,8 @@ public class Gun : MonoBehaviour
         if (m_camFx)
             m_camFx.ApplyShake(15.0f);
 
-
-
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.ResetInputTimer();
 
         GoToState(GunState.Recharge);
        

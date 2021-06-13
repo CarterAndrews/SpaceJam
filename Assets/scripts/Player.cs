@@ -148,6 +148,7 @@ public class Player : MonoBehaviour
             if (AudioManager.Instance != null)
             {
                 AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.YETI_SWIPE, transform.position);
+                AudioManager.Instance.ResetInputTimer();
             }
         }
         else
