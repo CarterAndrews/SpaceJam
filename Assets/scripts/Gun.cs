@@ -7,7 +7,9 @@ public class Gun : MonoBehaviour
     private Transform m_attachPoint;
     private GameObject m_chargeBall;
     private GameObject m_blastPrefab;
+    private GameObject m_guidePrefab;
     CameraFx m_camFx;
+    GameObject m_guideObj = null;
     enum GunState
     {
         Idle,
@@ -23,7 +25,9 @@ public class Gun : MonoBehaviour
         m_state = GunState.Idle;
         m_chargeBall = transform.Find("art").Find("charge-ball").gameObject;
         m_blastPrefab = Resources.Load<GameObject>("blast");
+        m_guidePrefab = Resources.Load<GameObject>("laser-guide");
         m_camFx = GameObject.FindObjectOfType<CameraFx>();
+        m_guideObj = Instantiate(m_guidePrefab, m_chargeBall.transform.position, Quaternion.LookRotation(transform.forward, Vector3.up), transform);
     }
 
     private void Update()
@@ -41,6 +45,20 @@ public class Gun : MonoBehaviour
         }
 
         UpdateMovement();
+
+        UpdateGuideLaser();
+    }
+
+    public void UpdateGuideLaser()
+    {
+        float rayDist = 100;
+        RaycastHit hitInfo;
+        Ray ray = new Ray(m_chargeBall.transform.position, transform.forward);
+        if (Physics.SphereCast(ray, .4f, out hitInfo, rayDist))
+        {
+            rayDist = hitInfo.distance;
+        }
+        m_guideObj.transform.localScale = new Vector3(1, 1, rayDist);
     }
 
     public void SetAttachPoint(Transform transform)
@@ -82,6 +100,8 @@ public class Gun : MonoBehaviour
     const float kChargeDuration = .15f;
     const float kMaxChargeBallRad = 10.0f;
     float m_chargeProg = 0;
+    float m_toggleTimer;
+    
     private void DoCharge()
     {
         if (m_enteringState)
@@ -89,6 +109,7 @@ public class Gun : MonoBehaviour
             m_enteringState = false;
             m_chargeProg = 0;
             m_attachPoint.SendMessageUpwards("SetCanMove", false);
+           
         }
 
         m_chargeProg += Time.deltaTime;
@@ -113,7 +134,7 @@ public class Gun : MonoBehaviour
         Ray ray = new Ray(m_chargeBall.transform.position, transform.forward);
         float rayDist = 100;
         RaycastHit hitInfo;
-        if (Physics.SphereCast(ray, .2f, out hitInfo, rayDist))
+        if (Physics.SphereCast(ray, .4f, out hitInfo, rayDist))
         {
             var hitObject = hitInfo.collider.gameObject;
             Player otherPlayer = hitObject.GetComponent<Player>();

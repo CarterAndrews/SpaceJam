@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7435246565730945192
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31.63832
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 18.90633
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909618, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909619, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d85ffc8c5bcf1b64cb8aaf25b5f97f9f, type: 2}
+    - target: {fileID: 833677027319909619, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909619, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909619, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909619, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909619, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909619, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909619, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909619, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833677027319909621, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+      propertyPath: m_Name
+      value: laser-guide Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 833677027319909620, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: a7414403967341f4a892e5bd0c90e3a6, type: 3}
