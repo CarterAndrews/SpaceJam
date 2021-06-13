@@ -53,7 +53,7 @@
 			<destination>{61fceca4-bafb-48a5-bdec-1c1a22bd35a4}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{bdc6ce3f-8ff0-474c-a1d0-8dfff924e07d}</destination>
+			<destination>{a56cab0e-d0cb-4c74-91d6-5e79eec47fd5}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{521df9cf-38c8-43b0-836e-bcce1b871a65}" />
@@ -130,6 +130,9 @@
 		<relationship name="automators">
 			<destination>{6b3da013-4e72-4226-aaf1-4d159f251477}</destination>
 		</relationship>
+		<relationship name="modulators">
+			<destination>{899c2e1a-9b51-440b-9f5b-69f74afa01f0}</destination>
+		</relationship>
 		<relationship name="sound">
 			<destination>{f0a83a60-e07c-407b-a66e-b670b88cdee0}</destination>
 		</relationship>
@@ -169,6 +172,14 @@
 		<relationship name="automationCurves">
 			<destination>{7a7c2a81-db36-4451-b008-864bdaee35da}</destination>
 		</relationship>
+	</object>
+	<object class="RandomizerModulator" id="{899c2e1a-9b51-440b-9f5b-69f74afa01f0}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>29.5</value>
+		</property>
 	</object>
 	<object class="MultiSound" id="{f0a83a60-e07c-407b-a66e-b670b88cdee0}">
 		<relationship name="sounds">

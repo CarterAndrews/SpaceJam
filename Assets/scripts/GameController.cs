@@ -135,7 +135,7 @@ public class GameController : MonoBehaviour
             if (!dead.isEvil)
             {
                 // Player cheers managed in Gun DoBlast
-                AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.YETI_ROAR, transform.position);
+                AudioManager.Instance.TriggerSoundAttached(AudioManager.TriggerSoundType.YETI_ROAR, gameObject);
             }
         }
     }

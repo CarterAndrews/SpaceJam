@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3960562449747762500}
   - component: {fileID: 3960562449747762503}
   - component: {fileID: 3960562449747762501}
+  - component: {fileID: 4975871107838945967}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MonoBehaviour:
   VictoryCheer: event:/WorldSfx/Victory
   VictorySong: event:/WorldSfx/Applause
   Death: event:/WorldSfx/Death
+  Wind: {fileID: 4975871107838945967}
 --- !u!114 &3960562449747762501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,3 +69,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
   ListenerNumber: -1
+--- !u!114 &4975871107838945967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960562449747762502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/WorldSfx/Ambiance
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0

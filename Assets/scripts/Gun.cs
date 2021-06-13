@@ -151,7 +151,7 @@ public class Gun : MonoBehaviour
                 {
                     AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.VICTORY_SONG, transform.position);
                     foreach(KeyValuePair<GameObject,FMODUnity.StudioEventEmitter> runner in AudioManager.Instance.Runners)
-                        AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.VICTORY_CHEER, runner.Value.gameObject.transform.position);
+                        AudioManager.Instance.TriggerSoundAttached(AudioManager.TriggerSoundType.VICTORY_CHEER, runner.Value.gameObject);
                 }
             }
 
@@ -162,8 +162,8 @@ public class Gun : MonoBehaviour
         if (m_camFx)
             m_camFx.ApplyShake(15.0f);
 
-
-
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.ResetInputTimer();
 
         GoToState(GunState.Recharge);
        
@@ -190,7 +190,7 @@ public class Gun : MonoBehaviour
             m_rechargeTimer + kPreChargeTime - Time.deltaTime <= kRechargeTime) // Start sfx early
         {
             if (AudioManager.Instance != null)
-                AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.GUN_FILLED, transform.position);
+                AudioManager.Instance.TriggerSoundAttached(AudioManager.TriggerSoundType.GUN_FILLED, gameObject);
         }
 
         if (m_rechargeTimer > kRechargeTime)
