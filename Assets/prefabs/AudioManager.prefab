@@ -52,6 +52,7 @@ MonoBehaviour:
   GunFilled: event:/WorldSfx/BeamFill
   VictoryCheer: event:/WorldSfx/Victory
   VictorySong: event:/WorldSfx/Applause
+  Death: event:/WorldSfx/Death
 --- !u!114 &3960562449747762501
 MonoBehaviour:
   m_ObjectHideFlags: 0

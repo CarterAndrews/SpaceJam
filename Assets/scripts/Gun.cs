@@ -147,6 +147,12 @@ public class Gun : MonoBehaviour
             if(null != otherPlayer && otherPlayer.isEvil)
             {
                 otherPlayer.Die();
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.VICTORY_SONG, transform.position);
+                    foreach(KeyValuePair<GameObject,FMODUnity.StudioEventEmitter> runner in AudioManager.Instance.Runners)
+                        AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.VICTORY_CHEER, runner.Value.gameObject.transform.position);
+                }
             }
 
             rayDist = hitInfo.distance;

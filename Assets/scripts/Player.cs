@@ -76,11 +76,8 @@ public class Player : MonoBehaviour
         camRight = Camera.main.transform.right;
         camRight.y = 0;
         camRight.Normalize();
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.RevokeRunEffect(gameObject);
-            AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
-        }
+
+        ApplyRunEffect(true);
     }
 
     private void Update()
@@ -172,10 +169,7 @@ public class Player : MonoBehaviour
         GetComponentInChildren<FootPrintMaker>().enabled = true;
 
         Villain = this;
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.RevokeRunEffect(gameObject);
-        }
+        ApplyRunEffect(false);
     }
 
     public void Die() // This or ondestroyed, whatever you prefer
@@ -186,8 +180,10 @@ public class Player : MonoBehaviour
         GameController.gameController.RegisterPlayerDeath(this);
 
         speedUpdate.RemoveAllListeners();
+
+        ApplyRunEffect(false);
         if (AudioManager.Instance != null)
-            AudioManager.Instance.RevokeRunEffect(gameObject);
+            AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.DEATH, transform.position);
     }
     public void reset()
     {
@@ -200,6 +196,8 @@ public class Player : MonoBehaviour
         GetComponentInChildren<FootPrintMaker>().enabled = false;
         m_gun.gameObject.SetActive(true);
         m_snailTrail.Play();
+
+        ApplyRunEffect(true);
     }
 
     private void SetupGun()
@@ -212,5 +210,17 @@ public class Player : MonoBehaviour
         m_gun.SetAttachPoint(m_gunAttach);
         if (isEvil)
             m_gun.gameObject.SetActive(false);
+    }
+
+
+    private void ApplyRunEffect(bool apply)
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.RevokeRunEffect(gameObject);
+
+            if(apply)
+                AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
+        }
     }
 }

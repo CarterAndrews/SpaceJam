@@ -93,6 +93,9 @@
 	</object>
 	<object class="MixerBusPanner" id="{18abb6ef-d16d-438c-9b34-7527d49bc785}" />
 	<object class="SingleSound" id="{42a8de41-4871-4a90-8604-c7d7898a3fdd}">
+		<property name="start">
+			<value>0.85000000000000009</value>
+		</property>
 		<property name="length">
 			<value>3.9286041666666667</value>
 		</property>
@@ -107,6 +110,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{f26eb350-239e-422a-9962-333d15f139e8}">
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -152,13 +158,16 @@
 	<object class="MixerBusPanner" id="{6d2a1204-cde0-452a-b3c8-c852581bd19f}" />
 	<object class="MixerBusFader" id="{dffe3394-b26f-42c3-ad08-494b1c55529d}" />
 	<object class="SpatialiserEffect" id="{185285bb-d680-4798-bee4-53180ddc882d}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
 		<property name="maximumDistance">
 			<value>75</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{d34e63da-e16e-4851-ad21-a917ac2950c3}">
 		<property name="position">
-			<value>0</value>
+			<value>0.85000000000000009</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -169,7 +178,7 @@
 	</object>
 	<object class="AutomationPoint" id="{c7ca5ce4-7823-440c-bdce-40d3d8052793}">
 		<property name="position">
-			<value>1</value>
+			<value>1.8500000000000005</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -177,7 +186,7 @@
 	</object>
 	<object class="AutomationPoint" id="{d0eb784e-a1e6-445c-afc4-7bdd86368762}">
 		<property name="position">
-			<value>3</value>
+			<value>3.849999999999997</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -188,7 +197,7 @@
 	</object>
 	<object class="AutomationPoint" id="{037e6c57-74a2-43b5-82ef-f5710edb028a}">
 		<property name="position">
-			<value>3.9286041666666667</value>
+			<value>4.7786041666666641</value>
 		</property>
 		<property name="value">
 			<value>0</value>
