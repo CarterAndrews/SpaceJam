@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         if (!playerInput)
             Initialize();
     }
-    private void Initialize(bool evilAudio = false)
+    private void Initialize()
     {
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["move"];
@@ -66,13 +66,14 @@ public class Player : MonoBehaviour
         camRight.Normalize();
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.RevokeRunEffect(gameObject); // Just in case
-            if(!evilAudio)
-                AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
+            AudioManager.Instance.RevokeRunEffect(gameObject);
+            AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
         }
     }
     private void FixedUpdate()
     {
+        speedUpdate?.Invoke(Velocity);
+
         if (!m_canMove)
             return;
         worldMovementDirection = moveAction.ReadValue<Vector2>();
@@ -83,7 +84,6 @@ public class Player : MonoBehaviour
         worldLookDirection = worldLookDirection.y * camForward + worldLookDirection.x * camRight;
         transform.LookAt(transform.position + worldLookDirection);
         
-        speedUpdate?.Invoke(Velocity);
     }
     // Update is called once per frame
     void Update()
@@ -132,10 +132,15 @@ public class Player : MonoBehaviour
         mr.enabled = false;
         playerMesh.SetActive(false);
         isEvil = true;
-        Villain = this;
         m_gun.gameObject.SetActive(false);
         //GetComponent<MeshRenderer>().enabled = false;
         GetComponentInChildren<FootPrintMaker>().enabled = true;
+
+        Villain = this;
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.RevokeRunEffect(gameObject);
+        }
     }
 
     public void Die() // This or ondestroyed, whatever you prefer
