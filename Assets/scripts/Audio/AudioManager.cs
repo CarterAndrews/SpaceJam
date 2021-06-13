@@ -21,6 +21,7 @@ namespace Audio
 
         public Dictionary<GameObject, FMODUnity.StudioEventEmitter> Runners = new Dictionary<GameObject, FMODUnity.StudioEventEmitter>();
 
+        private float _initialDampening = 1f;
         private float _elapsedTime = 0f;
         private float _timeSinceInput = -4f;
         private float _inputTimeLerper = -4f;
@@ -35,12 +36,18 @@ namespace Audio
 
         private void Update()
         {
+            if (_initialDampening > 0)
+            {
+                _initialDampening -= Time.deltaTime/3f;
+                if (_initialDampening < 0)
+                    _initialDampening = 0;
+            }
             _elapsedTime += Time.unscaledDeltaTime;
             _timeSinceInput += Time.unscaledDeltaTime;
             _inputTimeLerper = Mathf.Lerp(_inputTimeLerper,_timeSinceInput, 4f*Time.unscaledDeltaTime);
 
             Wind.SetParameter("Speed", Mathf.PerlinNoise(_elapsedTime / 4f, 0f));
-            Wind.SetParameter("Atten", Mathf.PerlinNoise(_elapsedTime / 8f, 0f));
+            Wind.SetParameter("Atten", Mathf.Clamp01(Mathf.PerlinNoise(_elapsedTime / 8f, 0f)+ _initialDampening));
             Wind.SetParameter("Action", 1f- Mathf.Clamp01(_inputTimeLerper / _maxInputDelay));
         }
         public void ResetInputTimer()
@@ -86,37 +93,38 @@ namespace Audio
 
         public void TriggerSound(TriggerSoundType sound, Vector3 position)
         {
-            string foundSound = "";
+            string foundSound = GetSound(sound);
+            if (foundSound != "")
+                FMODUnity.RuntimeManager.PlayOneShot(foundSound, position);
+        }
+        public void TriggerSoundAttached(TriggerSoundType sound, GameObject obj)
+        {
+            string foundSound = GetSound(sound);
+            if (foundSound != "")
+                FMODUnity.RuntimeManager.PlayOneShotAttached(foundSound, obj);
+        }
 
+        public string GetSound(TriggerSoundType sound) // Not a dictionary because I wanted easy assignment
+        {
             switch (sound)
             {
                 case TriggerSoundType.GUNSHOT:
-                    foundSound = Gunshot;
-                    break;
+                    return Gunshot;
                 case TriggerSoundType.YETI_ROAR:
-                    foundSound = YetiRoar;
-                    break;
+                    return YetiRoar;
                 case TriggerSoundType.YETI_SWIPE:
-                    foundSound = YetiSwipe;
-                    break;
+                    return YetiSwipe;
                 case TriggerSoundType.GUN_FILLED:
-                    foundSound = GunFilled;
-                    break;
+                    return GunFilled;
                 case TriggerSoundType.VICTORY_SONG:
-                    foundSound = VictorySong;
-                    break;
+                    return VictorySong;
                 case TriggerSoundType.VICTORY_CHEER:
-                    foundSound = VictoryCheer;
-                    break;
+                    return VictoryCheer;
                 case TriggerSoundType.DEATH:
-                    foundSound = Death;
-                    break;
+                    return Death;
             }
-
-            if (foundSound != "")
-                FMODUnity.RuntimeManager.PlayOneShot(foundSound, position);
-            else
-                Debug.LogWarning("Invalid trigger sound: " + Enum.GetName(typeof(TriggerSoundType), sound));
+            Debug.LogWarning("Invalid trigger sound: " + Enum.GetName(typeof(TriggerSoundType), sound));
+            return "";
         }
 
         public enum TriggerSoundType

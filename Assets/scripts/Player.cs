@@ -147,7 +147,7 @@ public class Player : MonoBehaviour
 
             if (AudioManager.Instance != null)
             {
-                AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.YETI_SWIPE, transform.position);
+                AudioManager.Instance.TriggerSoundAttached(AudioManager.TriggerSoundType.YETI_SWIPE, gameObject);
                 AudioManager.Instance.ResetInputTimer();
             }
         }
@@ -190,7 +190,7 @@ public class Player : MonoBehaviour
 
         ApplyRunEffect(false);
         if (AudioManager.Instance != null)
-            AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.DEATH, transform.position);
+            AudioManager.Instance.TriggerSoundAttached(AudioManager.TriggerSoundType.DEATH, gameObject);
     }
     public void reset()
     {
