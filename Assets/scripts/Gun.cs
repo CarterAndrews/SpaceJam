@@ -85,8 +85,8 @@ public class Gun : MonoBehaviour
         if (m_attachPoint == null)
             return;
 
-        transform.position = Vector3.Lerp(transform.position, m_attachPoint.position, Time.deltaTime * 15.0f);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(m_attachPoint.forward, Vector3.up), Time.deltaTime * 15.0f);
+        transform.position = m_attachPoint.position;
+        transform.rotation = Quaternion.LookRotation(m_attachPoint.forward, Vector3.up);
     }
 
     private void GoToState(GunState newState)
