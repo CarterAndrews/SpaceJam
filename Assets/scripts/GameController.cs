@@ -55,16 +55,36 @@ public class GameController : MonoBehaviour
         PlayerInput evilBean = players[Random.Range(0, players.Count)];
         evilBean.GetComponent<Player>().makeEvilBean();
     }
-    public void StartGame()
+    public void StartOrPauseGame()
     {
         print("starting");
-        if (SceneManager.GetActiveScene().name == "join")
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == "join")
         {
-            livingPlayerCount = players.Count;
-            SceneManager.LoadScene("Main");
-            selectEvilBean();
-            SpawnPlayers();
+            StartGame();
         }
+        else if(currentScene == "menu")
+        {
+            LoadLobby();
+        }
+        else if (currentScene=="Main")
+        {
+            PauseGame();
+        }
+    }
+    public void StartGame()
+    {
+        livingPlayerCount = players.Count;
+        SceneManager.LoadScene("Main");
+        selectEvilBean();
+        SpawnPlayers();
+    }
+    public void PauseGame()
+    {
+        if (Time.timeScale == 1)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
     }
     public void RegisterPlayerDeath(Player dead)
     {
