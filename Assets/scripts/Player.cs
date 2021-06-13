@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private MeshRenderer mr;
     private Gun m_gun;
     private Transform m_gunAttach;
+    public int score = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +73,7 @@ public class Player : MonoBehaviour
     {
         if (StartPauseAction.ReadValue<float>() != 0)
         {
-            GameController.gameController.StartGame();
+            GameController.gameController.StartOrPauseGame();
         }
     }
     private void Attack()
