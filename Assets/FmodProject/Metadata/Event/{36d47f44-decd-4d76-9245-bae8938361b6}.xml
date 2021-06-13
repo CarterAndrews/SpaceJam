@@ -103,6 +103,9 @@
 		</relationship>
 	</object>
 	<object class="SoundScatterer" id="{43bd9d5a-9701-45e2-baa1-ed14709c60a3}">
+		<property name="start">
+			<value>1.1500000000000001</value>
+		</property>
 		<property name="length">
 			<value>3</value>
 		</property>
@@ -244,10 +247,10 @@
 	<object class="MixerBusFader" id="{2dc8dd90-ba02-4eca-8d83-801f0a3fdf30}" />
 	<object class="AutomationPoint" id="{b33d6c15-1004-41b7-a1ff-3a4706dddc20}">
 		<property name="position">
-			<value>0.79556650246305427</value>
+			<value>1.7500000000000007</value>
 		</property>
 		<property name="value">
-			<value>100</value>
+			<value>140</value>
 		</property>
 		<property name="curveShape">
 			<value>0.267989486</value>
@@ -255,23 +258,23 @@
 	</object>
 	<object class="AutomationPoint" id="{1321e122-34b0-40cb-b2ee-43584486dcca}">
 		<property name="position">
-			<value>0.19704433497536947</value>
+			<value>1.3470443349753698</value>
 		</property>
 		<property name="value">
-			<value>80</value>
+			<value>90</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{2063946b-bad0-4920-84fc-7107c9a8aef2}">
 		<property name="position">
-			<value>2.5</value>
+			<value>3.1499999999999959</value>
 		</property>
 		<property name="value">
-			<value>20</value>
+			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{81973aae-3606-41ae-8898-48e791a67656}">
 		<property name="position">
-			<value>2.5000208333333331</value>
+			<value>3.6500208333333291</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -279,7 +282,7 @@
 	</object>
 	<object class="AutomationPoint" id="{bb89dbb9-0ed7-42bb-8028-688138f3034e}">
 		<property name="position">
-			<value>0.19704433497536947</value>
+			<value>1.3470443349753698</value>
 		</property>
 		<property name="value">
 			<value>-11</value>
@@ -290,7 +293,7 @@
 	</object>
 	<object class="AutomationPoint" id="{a0606378-83d6-48ed-8e06-06c589b8c7ce}">
 		<property name="position">
-			<value>3</value>
+			<value>3.6499999999999959</value>
 		</property>
 		<property name="value">
 			<value>-80</value>

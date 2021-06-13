@@ -15,7 +15,7 @@ namespace Audio
         [FMODUnity.EventRef]
         public string InvisFootsteps, MovementChatter;
         [FMODUnity.EventRef]
-        public string YetiRoar, YetiSwipe, Gunshot, GunFilled, VictoryCheer, VictorySong;
+        public string YetiRoar, YetiSwipe, Gunshot, GunFilled, VictoryCheer, VictorySong, Death;
 
         public Dictionary<GameObject, FMODUnity.StudioEventEmitter> Runners = new Dictionary<GameObject, FMODUnity.StudioEventEmitter>();
 
@@ -39,8 +39,7 @@ namespace Audio
                 Destroy(go.GetComponent<StudioEventEmitter>());
             }
             Runners[go] = emitter;
-            speedUpdate.AddListener((speed) => {
-                Debug.Log("Players: " + speed); emitter.SetParameter("Speed", speed); });
+            speedUpdate.AddListener((speed) => { emitter.SetParameter("Speed", speed); /*Debug.Log("Players: " + speed);*/ });
         }
         public void RevokeRunEffect(GameObject go)
         {
@@ -62,7 +61,7 @@ namespace Audio
             e.setParameterByName("Speed", speed);
             e.start();
             e.release();
-            Debug.Log("Monster: " + speed);
+            //Debug.Log("Monster: " + speed);
         }
 
         public void TriggerSound(TriggerSoundType sound, Vector3 position)
@@ -84,8 +83,13 @@ namespace Audio
                     foundSound = GunFilled;
                     break;
                 case TriggerSoundType.VICTORY_SONG:
+                    foundSound = VictorySong;
                     break;
                 case TriggerSoundType.VICTORY_CHEER:
+                    foundSound = VictoryCheer;
+                    break;
+                case TriggerSoundType.DEATH:
+                    foundSound = Death;
                     break;
             }
 
@@ -104,6 +108,7 @@ namespace Audio
             GUN_FILLED = 4,
             VICTORY_SONG = 5,
             VICTORY_CHEER = 6,
+            DEATH = 7,
         }
     }
 }
