@@ -10,6 +10,10 @@ public class GameController : MonoBehaviour
     public List<PlayerInput> players;
     private int livingPlayerCount;
     public List<Transform> playerStartingSpawns;
+    private bool isGameOver;
+    public GameObject hunterWin;
+    public GameObject monsterWin;
+    public GameObject pauseScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +73,12 @@ public class GameController : MonoBehaviour
         }
         else if (currentScene=="Main")
         {
-            PauseGame();
+            if(!isGameOver)
+                PauseGame();
+            else
+            {
+                LoadLobby();
+            }
         }
     }
     public void StartGame()
@@ -82,27 +91,34 @@ public class GameController : MonoBehaviour
     public void PauseGame()
     {
         if (Time.timeScale == 1)
+        {
+            pauseScreen.SetActive(true);
             Time.timeScale = 0;
+        }
         else
+        {
+            pauseScreen.SetActive(false);
             Time.timeScale = 1;
+        }
     }
     public void RegisterPlayerDeath(Player dead)
     {
         if (dead.isEvil)
         {
-            GameOver();
+            hunterWin.SetActive(true);
+            isGameOver = true;
             dead.score--;
         }
-        livingPlayerCount--;
-        if (livingPlayerCount <= 1)
+        else
         {
-            GameOver();
+            livingPlayerCount--;
+            if (livingPlayerCount <= 1)
+            {
+                monsterWin.SetActive(true);
+                isGameOver = true;
+
+            }
         }
-    }
-    private void GameOver()
-    {
-        SceneManager.LoadScene("join");
-        RespawnAllPlayers();
     }
     private void RespawnAllPlayers()
     {
@@ -132,7 +148,10 @@ public class GameController : MonoBehaviour
     }
     public static void LoadLobby()
     {
+        gameController.hunterWin.SetActive(false);
+        gameController.monsterWin.SetActive(false);
         SceneManager.LoadScene("join");
+        gameController.RespawnAllPlayers();
         gameController.SpawnPlayers();
     }
 }
