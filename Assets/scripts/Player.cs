@@ -131,11 +131,11 @@ public class Player : MonoBehaviour
 
             timeSinceLastAttack = 0;
 
-            Vector3 attackPos = rb.position + transform.forward;
+            Vector3 attackPos = rb.position;// + transform.forward;
             Transform ps = Instantiate(slashPs, attackPos, Quaternion.identity).transform;
             ps.transform.forward = transform.forward;
             Destroy(ps.gameObject, 1);
-            Collider[] hits = Physics.OverlapSphere(attackPos, 1, playerMask);
+            Collider[] hits = Physics.OverlapSphere(attackPos, 3, playerMask);
             foreach (Collider hit in hits)
             {
                 if (hit.gameObject != gameObject)
