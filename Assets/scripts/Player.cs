@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private Transform m_gunAttach;
     public int score = 0;
     public bool m_canMove = true;
+    public ParticleSystem m_snailTrail; 
     public float Velocity { get => rb.velocity.magnitude; }
 
     // Start is called before the first frame update
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
     }
     private void Initialize(bool evilAudio = false)
     {
+        m_snailTrail = GetComponent<ParticleSystem>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["move"];
         StartPauseAction = playerInput.actions["StartPause"];
@@ -130,6 +132,7 @@ public class Player : MonoBehaviour
         Villain = this;
         m_gun.gameObject.SetActive(false);
         //GetComponent<MeshRenderer>().enabled = false;
+        m_snailTrail.Stop();
         GetComponentInChildren<FootPrintMaker>().enabled = true;
     }
 
@@ -154,6 +157,7 @@ public class Player : MonoBehaviour
         rb.GetComponent<Collider>().enabled = true;
         GetComponentInChildren<FootPrintMaker>().enabled = false;
         m_gun.gameObject.SetActive(true);
+        m_snailTrail.Play();
     }
 
     private void SetupGun()

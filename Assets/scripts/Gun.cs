@@ -170,6 +170,7 @@ public class Gun : MonoBehaviour
         {
             m_enteringState = false;
             m_rechargeTimer = 0;
+            m_guideObj.SetActive(false);
         }
         m_rechargeTimer += Time.deltaTime;
 
@@ -178,6 +179,7 @@ public class Gun : MonoBehaviour
 
         if (m_rechargeTimer > kRechargeTime)
         {
+            m_guideObj.SetActive(true);
             GoToState(GunState.Idle);
         }
     }
