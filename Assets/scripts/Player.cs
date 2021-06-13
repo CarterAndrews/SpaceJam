@@ -61,6 +61,12 @@ public class Player : MonoBehaviour
             if (context.interaction is PressInteraction && SceneManager.GetActiveScene().name == "Main")
                 Attack();
         };
+        StartPauseAction.performed +=
+        context =>
+        {
+            if (context.interaction is PressInteraction)
+                GameController.gameController.StartOrPauseGame();
+        };
         rb = GetComponent<Rigidbody>();
         DontDestroyOnLoad(gameObject);
         SetupGun();
@@ -97,14 +103,6 @@ public class Player : MonoBehaviour
         //worldLookDirection = worldLookDirection.y * camForward + worldLookDirection.x * camRight;
         transform.LookAt(transform.position - worldLookDirection);
         
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (StartPauseAction.ReadValue<float>() != 0)
-        {
-            GameController.gameController.StartOrPauseGame();
-        }
     }
     private void SetCanMove(bool move)
     {

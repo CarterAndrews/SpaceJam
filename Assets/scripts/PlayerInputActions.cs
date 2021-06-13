@@ -32,7 +32,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""767b0443-327a-402f-b26f-0bb5006bbdc7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
                 },
                 {
                     ""name"": ""Attack"",
@@ -220,7 +220,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""2D Vector"",
                     ""id"": ""a172d864-b16b-48fc-b1b8-996839c0e945"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

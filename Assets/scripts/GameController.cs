@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public GameObject hunterWin;
     public GameObject monsterWin;
     public GameObject pauseScreen;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour
         {
             gameController = this;
             DontDestroyOnLoad(gameObject);
+            players = new List<PlayerInput>();
         }
     }
     private void OnEnable()
@@ -45,9 +47,14 @@ public class GameController : MonoBehaviour
     }
     private void OnPlayerJoined(PlayerInput playerInput)
     {
+        if (SceneManager.GetActiveScene().name == "menu")
+        {
+            SceneManager.LoadScene("join");
+        }
         players.Add(playerInput);
         playerInput.GetComponent<Player>().changeColor(playerColors[players.Count-1]);
         playerInput.gameObject.name = "player" + players.Count.ToString();
+        
     }
     private void OnPlayerLeft(PlayerInput playerInput)
     {
