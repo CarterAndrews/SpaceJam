@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{83fe03c2-de6d-4863-b82d-476137f911ee}">
+		<property name="assetPath">
+			<value>Sfx Sources/Victory/App4.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.49181249999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8c785623-c006-49d4-8312-d774f19cb1f6}</destination>
+		</relationship>
+	</object>
+</objects>
