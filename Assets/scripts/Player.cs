@@ -103,7 +103,10 @@ public class Player : MonoBehaviour
             foreach (Collider hit in hits)
             {
                 if (hit.gameObject != gameObject)
+                {
                     hit.gameObject.GetComponent<Player>().Die();
+                    score++;
+                }
             }
         }
         else
