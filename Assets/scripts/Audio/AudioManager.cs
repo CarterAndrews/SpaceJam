@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream
 using FMOD.Studio;
 using FMODUnity;
+=======
+using System;
+>>>>>>> Stashed changes
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,5 +66,35 @@ namespace Audio
             e.release();
         }
 
+        public void TriggerSound(TriggerSoundType sound, Vector3 position)
+        {
+            string foundSound = "";
+
+            switch (sound)
+            {
+                case TriggerSoundType.GUNSHOT:
+                    foundSound = Gunshot;
+                    break;
+                case TriggerSoundType.YETI_ROAR:
+                    foundSound = YetiRoar;
+                    break;
+                case TriggerSoundType.YETI_SWIPE:
+                    foundSound = YetiSwipe;
+                    break;
+            }
+
+            if (foundSound != "")
+                FMODUnity.RuntimeManager.PlayOneShot(foundSound, position);
+            else
+                Debug.LogWarning("Invalid trigger sound: " + Enum.GetName(typeof(TriggerSoundType), sound));
+        }
+
+        public enum TriggerSoundType
+        {
+            UNDEFINED = 0,
+            GUNSHOT = 1,
+            YETI_ROAR = 2,
+            YETI_SWIPE = 3
+        }
     }
 }
