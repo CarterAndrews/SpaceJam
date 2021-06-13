@@ -15,7 +15,7 @@ namespace Audio
         [FMODUnity.EventRef]
         public string InvisFootsteps, MovementChatter;
         [FMODUnity.EventRef]
-        public string YetiRoar, YetiSwipe, Gunshot;
+        public string YetiRoar, YetiSwipe, Gunshot, GunFilled;
 
         public Dictionary<GameObject, FMODUnity.StudioEventEmitter> Runners = new Dictionary<GameObject, FMODUnity.StudioEventEmitter>();
 
@@ -80,6 +80,9 @@ namespace Audio
                 case TriggerSoundType.YETI_SWIPE:
                     foundSound = YetiSwipe;
                     break;
+                case TriggerSoundType.GUN_FILLED:
+                    foundSound = GunFilled;
+                    break;
             }
 
             if (foundSound != "")
@@ -93,7 +96,8 @@ namespace Audio
             UNDEFINED = 0,
             GUNSHOT = 1,
             YETI_ROAR = 2,
-            YETI_SWIPE = 3
+            YETI_SWIPE = 3,
+            GUN_FILLED = 4,
         }
     }
 }

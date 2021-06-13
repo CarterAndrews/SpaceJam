@@ -166,6 +166,7 @@ public class Gun : MonoBehaviour
     private float m_rechargeTimer = 0;
     private const float kRechargeTime = 5;
     private const float kRenableMovement = .7f;
+    private const float kPreChargeTime = 1f;
     private void DoRecharge()
     {
         if (m_enteringState)
@@ -178,6 +179,13 @@ public class Gun : MonoBehaviour
 
         if(m_rechargeTimer > kRenableMovement)
             m_attachPoint.SendMessageUpwards("SetCanMove", true);
+
+        if (m_rechargeTimer + kPreChargeTime > kRechargeTime && 
+            m_rechargeTimer + kPreChargeTime - Time.deltaTime <= kRechargeTime) // Start sfx early
+        {
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.GUN_FILLED, transform.position);
+        }
 
         if (m_rechargeTimer > kRechargeTime)
         {
