@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 855.3159, g: 1193.5049, b: 1895.0088, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -322,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8053820641872862154, guid: 5acc260dde89c96418c6329dc4d38b3d, type: 3}
       propertyPath: m_text
-      value: Credits
+      value: CREDITS
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5acc260dde89c96418c6329dc4d38b3d, type: 3}
@@ -544,6 +544,11 @@ MonoBehaviour:
   YetiRoar: event:/WorldSfx/Roar
   YetiSwipe: event:/WorldSfx/YetiAttack
   Gunshot: event:/WorldSfx/Gunshot
+  GunFilled: 
+  VictoryCheer: 
+  VictorySong: 
+  Death: 
+  Wind: {fileID: 0}
 --- !u!20 &2020211006
 Camera:
   m_ObjectHideFlags: 0
@@ -1045,6 +1050,10 @@ PrefabInstance:
     - target: {fileID: 8053820640936694211, guid: 5acc260dde89c96418c6329dc4d38b3d, type: 3}
       propertyPath: m_Name
       value: CustomButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053820641872862154, guid: 5acc260dde89c96418c6329dc4d38b3d, type: 3}
+      propertyPath: m_text
+      value: PLAY
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5acc260dde89c96418c6329dc4d38b3d, type: 3}
