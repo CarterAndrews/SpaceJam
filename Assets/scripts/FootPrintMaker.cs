@@ -7,7 +7,7 @@ public class FootPrintMaker : MonoBehaviour
 {
     public GameObject footPrint;
     Vector3 lastStepPosition;
-    float strideLength = 1f;
+    float strideLength = 2f;
     float strideWidth = 0.25f;
     bool isRightFoot;
 
