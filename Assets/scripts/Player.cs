@@ -29,8 +29,12 @@ public class Player : MonoBehaviour
     private Transform m_gunAttach;
     public int score = 0;
     public bool m_canMove = true;
+
     public ParticleSystem m_snailTrail; 
-    public float Velocity { get => rb.velocity.magnitude; }
+
+    [HideInInspector]
+    public float LastAnalogInput;
+
     Vector3 camForward;
     Vector3 camRight;
     // Start is called before the first frame update
@@ -57,6 +61,12 @@ public class Player : MonoBehaviour
             if (context.interaction is PressInteraction && SceneManager.GetActiveScene().name == "Main")
                 Attack();
         };
+        StartPauseAction.performed +=
+        context =>
+        {
+            if (context.interaction is PressInteraction)
+                GameController.gameController.StartOrPauseGame();
+        };
         rb = GetComponent<Rigidbody>();
         DontDestroyOnLoad(gameObject);
         SetupGun();
@@ -74,11 +84,14 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        speedUpdate?.Invoke(Velocity);
+        Vector2 analogInput = moveAction.ReadValue<Vector2>();
+        LastAnalogInput = analogInput.magnitude;
+        speedUpdate?.Invoke(LastAnalogInput);
 
         if (!m_canMove)
             return;
-        worldMovementDirection = moveAction.ReadValue<Vector2>();
+
+        worldMovementDirection = analogInput;
         worldMovementDirection.z = worldMovementDirection.y;
         worldMovementDirection.y = 0;
         //worldMovementDirection = worldMovementDirection.y * camForward+worldMovementDirection.x*camRight;
@@ -91,26 +104,23 @@ public class Player : MonoBehaviour
         transform.LookAt(transform.position - worldLookDirection);
         
     }
-    // Update is called once per frame
-    void Update()
-    {
-        if (StartPauseAction.ReadValue<float>() != 0)
-        {
-            GameController.gameController.StartOrPauseGame();
-        }
-    }
     private void SetCanMove(bool move)
     {
         m_canMove = move;
         if (!m_canMove)
             rb.velocity = Vector3.zero;
     }
+    public GameObject slashPs;
     private void Attack()
     {
         //print(gameObject.name + " attacks!");
         if (isEvil)
         {
-            Collider[] hits = Physics.OverlapSphere(rb.position + transform.forward, 1, playerMask);
+            Vector3 attackPos = rb.position + transform.forward;
+            Transform ps = Instantiate(slashPs, attackPos, Quaternion.identity).transform;
+            ps.transform.forward = transform.forward;
+            Destroy(ps.gameObject, 1);
+            Collider[] hits = Physics.OverlapSphere(attackPos, 1, playerMask);
             foreach (Collider hit in hits)
             {
                 if (hit.gameObject != gameObject)
