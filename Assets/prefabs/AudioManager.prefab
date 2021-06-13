@@ -49,6 +49,9 @@ MonoBehaviour:
   YetiRoar: event:/WorldSfx/Roar
   YetiSwipe: event:/WorldSfx/YetiAttack
   Gunshot: event:/WorldSfx/Gunshot
+  GunFilled: event:/WorldSfx/BeamFill
+  VictoryCheer: event:/WorldSfx/Victory
+  VictorySong: event:/WorldSfx/Applause
 --- !u!114 &3960562449747762501
 MonoBehaviour:
   m_ObjectHideFlags: 0
