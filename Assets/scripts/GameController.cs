@@ -123,7 +123,7 @@ public class GameController : MonoBehaviour
 
         if (isGameOver)
         {
-            AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.YETI_ROAR);
+            AudioManager.Instance.TriggerSound(AudioManager.TriggerSoundType.YETI_ROAR,transform.position);
         }
     }
     private void RespawnAllPlayers()
