@@ -17,15 +17,35 @@ namespace Audio
         [FMODUnity.EventRef]
         public string YetiRoar, YetiSwipe, Gunshot, GunFilled, VictoryCheer, VictorySong, Death;
 
+        public StudioEventEmitter Wind;
+
         public Dictionary<GameObject, FMODUnity.StudioEventEmitter> Runners = new Dictionary<GameObject, FMODUnity.StudioEventEmitter>();
 
-        private float _maxConventionalSpeed = 12f; // Scuffed af
+        private float _elapsedTime = 0f;
+        private float _timeSinceInput = -4f;
+        private float _inputTimeLerper = -4f;
+        private const float _maxInputDelay = 10f;
 
         protected override void Awake()
         {
             if (AudioManager.Instance != null)
                 AudioManager.Instance.transform.position = transform.position;
             base.Awake();
+        }
+
+        private void Update()
+        {
+            _elapsedTime += Time.unscaledDeltaTime;
+            _timeSinceInput += Time.unscaledDeltaTime;
+            _inputTimeLerper = Mathf.Lerp(_inputTimeLerper,_timeSinceInput, 4f*Time.unscaledDeltaTime);
+
+            Wind.SetParameter("Speed", Mathf.PerlinNoise(_elapsedTime / 4f, 0f));
+            Wind.SetParameter("Atten", Mathf.PerlinNoise(_elapsedTime / 8f, 0f));
+            Wind.SetParameter("Action", 1f- Mathf.Clamp01(_inputTimeLerper / _maxInputDelay));
+        }
+        public void ResetInputTimer()
+        {
+            _timeSinceInput = 0;
         }
 
         public void SetupRunEffect(GameObject go, UnityEvent<float> speedUpdate)
