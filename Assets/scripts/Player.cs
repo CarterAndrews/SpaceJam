@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public Color evilBeanColor;
     public bool isEvil = false;
     public LayerMask playerMask;
-    private MeshRenderer mr;
+    public MeshRenderer mr;
     private Gun m_gun;
     private Transform m_gunAttach;
     public int score = 0;
@@ -50,7 +50,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         AudioManager.Instance.SetupRunEffect(gameObject, speedUpdate);
         DontDestroyOnLoad(gameObject);
-        mr = GetComponent<MeshRenderer>();
         SetupGun();
     }
     private void FixedUpdate()
