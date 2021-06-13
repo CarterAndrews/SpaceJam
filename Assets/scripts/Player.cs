@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private Gun m_gun;
     private Transform m_gunAttach;
     public int score = 0;
+    public bool m_canMove = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +56,9 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (!m_canMove)
+            return;
+
         Vector3 camForward = Camera.main.transform.forward;
         camForward.y = 0;
         camForward.Normalize();
@@ -75,6 +79,12 @@ public class Player : MonoBehaviour
         {
             GameController.gameController.StartOrPauseGame();
         }
+    }
+    private void SetCanMove(bool move)
+    {
+        m_canMove = move;
+        if (!m_canMove)
+            rb.velocity = Vector3.zero;
     }
     private void Attack()
     {

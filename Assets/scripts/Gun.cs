@@ -88,6 +88,7 @@ public class Gun : MonoBehaviour
         {
             m_enteringState = false;
             m_chargeProg = 0;
+            m_attachPoint.SendMessageUpwards("SetCanMove", false);
         }
 
         m_chargeProg += Time.deltaTime;
@@ -128,14 +129,27 @@ public class Gun : MonoBehaviour
         if (m_camFx)
             m_camFx.ApplyShake(15.0f);
         GoToState(GunState.Recharge);
+       
     }
 
+    private float m_rechargeTimer = 0;
+    private const float kRechargeTime = 5;
+    private const float kRenableMovement = .7f;
     private void DoRecharge()
     {
         if (m_enteringState)
         {
             m_enteringState = false;
+            m_rechargeTimer = 0;
         }
-        GoToState(GunState.Idle);
+        m_rechargeTimer += Time.deltaTime;
+
+        if(m_rechargeTimer > kRenableMovement)
+            m_attachPoint.SendMessageUpwards("SetCanMove", true);
+
+        if (m_rechargeTimer > kRechargeTime)
+        {
+            GoToState(GunState.Idle);
+        }
     }
 }

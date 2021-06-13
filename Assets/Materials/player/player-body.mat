@@ -43,7 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - BaseColor:
-        m_Texture: {fileID: 2800000, guid: 15e55eb9e99bd074ebc0c87104500c50, type: 3}
+        m_Texture: {fileID: 2800000, guid: 721f5fd1d42d31c4b92a407f2bc218fd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Metallic:
