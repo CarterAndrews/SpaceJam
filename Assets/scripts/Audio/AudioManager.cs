@@ -1,9 +1,6 @@
-<<<<<<< Updated upstream
 using FMOD.Studio;
 using FMODUnity;
-=======
 using System;
->>>>>>> Stashed changes
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
