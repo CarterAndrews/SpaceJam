@@ -171,7 +171,7 @@ public class Gun : MonoBehaviour
 
         float rayDist = 99;
         GameObject hitObject = null;
-        if ((rayDist = GetClosestHitDist(ref hitObject)) < rayDist)
+        if ((rayDist = GetClosestHitDist(ref hitObject)) < 200)
         {
             Player otherPlayer = hitObject.GetComponent<Player>();
             if(null != otherPlayer && otherPlayer.isEvil)
@@ -185,9 +185,13 @@ public class Gun : MonoBehaviour
                 }
             }
         }
-        Destructable dest = hitObject.GetComponent<Destructable>();
-        if (dest)
-            dest.Destruct();
+        if(hitObject)
+        {
+            Destructable dest = hitObject.GetComponent<Destructable>();
+            if (dest)
+                dest.Destruct();
+        }
+
 
         var blastObj = Instantiate(m_blastPrefab, m_chargeBall.transform.position, Quaternion.LookRotation(transform.forward,Vector3.up));
         blastObj.transform.localScale = new Vector3(1,1,rayDist);
