@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
     {
         if (Time.timeScale != 1 )
         {
+            Time.timeScale = 1;
             LoadLobby();
         }
         else if(SceneManager.GetActiveScene().name == "join")
@@ -49,9 +50,11 @@ public class GameController : MonoBehaviour
             SceneNavigator.GoToScene("menu");
             foreach (PlayerInput p in gameController.players)
             {
-                Destroy(p.gameObject);
+                Destroy(p.gameObject,0.1f);
+                p.gameObject.GetComponent<Player>().destoryGun();
             }
-            Destroy(gameController);
+            //Destroy(gameController,0.6f);
+            Destroy(gameController.gameObject, 0.12f);
         }
     }
     private void OnPlayerJoined(PlayerInput playerInput)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 853.5463, g: 1191.1372, b: 1890.6879, a: 1}
+  m_IndirectSpecularColor: {r: 855.4448, g: 1193.7109, b: 1895.3691, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YETI VS BEANS
+  m_text: YETI OR NOT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
   m_sharedMaterial: {fileID: -7680962103764369800, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
@@ -748,8 +748,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 14}
-  m_SizeDelta: {x: 307.9, y: 62.6}
+  m_AnchoredPosition: {x: 8.5174, y: 14}
+  m_SizeDelta: {x: 324.9347, y: 62.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493187939
 MonoBehaviour:
@@ -771,7 +771,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: THE LAST SNOWFLAKE
+  m_text: A BARNACLE + TEAM GAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
   m_sharedMaterial: {fileID: -7680962103764369800, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
@@ -1332,6 +1332,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: join
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2571792510178376469}
+        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
+        m_MethodName: DoFade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1592548627
@@ -2054,6 +2066,8 @@ GameObject:
   - component: {fileID: 2571792510178376460}
   - component: {fileID: 2571792510178376461}
   - component: {fileID: 2571792510178376463}
+  - component: {fileID: 2571792510178376468}
+  - component: {fileID: 2571792510178376469}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -2061,3 +2075,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2571792510178376468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2571792510178376467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/MainMenu/Song
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &2571792510178376469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2571792510178376467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4bd925e3ad762344a2e6573d1ef7a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emitter: {fileID: 2571792510178376468}
