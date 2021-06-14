@@ -38,6 +38,22 @@ public class GameController : MonoBehaviour
     {
         
     }
+    public static void quit()
+    {
+        if (Time.timeScale != 1 )
+        {
+            LoadLobby();
+        }
+        else if(SceneManager.GetActiveScene().name == "join")
+        {
+            SceneNavigator.GoToScene("menu");
+            foreach (PlayerInput p in gameController.players)
+            {
+                Destroy(p.gameObject);
+            }
+            Destroy(gameController);
+        }
+    }
     private void OnPlayerJoined(PlayerInput playerInput)
     {
         players.Add(playerInput);

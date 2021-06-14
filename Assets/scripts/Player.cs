@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private InputAction lookAction;
     private InputAction AttackAction;
     private InputAction StartPauseAction;
+    private InputAction QuitAction;
     private Rigidbody rb;
     private UnityEvent<float> speedUpdate = new UnityEvent<float>();
     private Vector3 worldMovementDirection;
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
         lookAction = playerInput.actions["Look"];
         StartPauseAction = playerInput.actions["StartPause"];
         AttackAction = playerInput.actions["Attack"];
+        QuitAction = playerInput.actions["Quit"];
         AttackAction.performed +=
         context =>
         {
@@ -66,6 +68,13 @@ public class Player : MonoBehaviour
         {
             if (context.interaction is PressInteraction)
                 GameController.gameController.StartOrPauseGame();
+        };
+        QuitAction.performed +=
+        context =>
+        {
+            if (context.interaction is PressInteraction)
+                GameController.quit();
+
         };
         rb = GetComponent<Rigidbody>();
         DontDestroyOnLoad(gameObject);
