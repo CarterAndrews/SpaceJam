@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     private GameObject m_guidePrefab;
     CameraFx m_camFx;
     GameObject m_guideObj = null;
+    LayerMask outerfence;
     enum GunState
     {
         Idle,
@@ -23,6 +24,7 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
+        outerfence = ~LayerMask.GetMask("OuterFence");
         m_state = GunState.Idle;
         m_chargeBall = transform.Find("art").Find("charge-ball").gameObject;
         m_blastPrefab = Resources.Load<GameObject>("blast");
@@ -59,7 +61,7 @@ public class Gun : MonoBehaviour
     {
         float rayDist = 100;
         Ray ray = new Ray(transform.position - Vector3.up * .8f - transform.forward * .5f, transform.forward);
-        RaycastHit[] hits = Physics.SphereCastAll(ray, .4f, rayDist);
+        RaycastHit[] hits = Physics.SphereCastAll(ray, .4f, rayDist, outerfence);
         RaycastHit closestHit = new RaycastHit();
         float closestdist = rayDist + 5;
         foreach (RaycastHit hit in hits)
@@ -172,9 +174,6 @@ public class Gun : MonoBehaviour
         if ((rayDist = GetClosestHitDist(ref hitObject)) < rayDist)
         {
             Player otherPlayer = hitObject.GetComponent<Player>();
-            Destructable dest = hitObject.GetComponent<Destructable>();
-            if (dest)
-                dest.Destruct();
             if(null != otherPlayer && otherPlayer.isEvil)
             {
                 otherPlayer.Die();
@@ -186,6 +185,10 @@ public class Gun : MonoBehaviour
                 }
             }
         }
+        Destructable dest = hitObject.GetComponent<Destructable>();
+        if (dest)
+            dest.Destruct();
+
         var blastObj = Instantiate(m_blastPrefab, m_chargeBall.transform.position, Quaternion.LookRotation(transform.forward,Vector3.up));
         blastObj.transform.localScale = new Vector3(1,1,rayDist);
         if (m_camFx)

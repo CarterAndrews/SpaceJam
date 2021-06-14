@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4393063196099898230}
   - component: {fileID: 817561828630422739}
   - component: {fileID: 3223565160325025817}
+  - component: {fileID: -6231651524661762402}
+  - component: {fileID: -961512332438883068}
   m_Layer: 0
   m_Name: Pine Tree_LP
   m_TagString: Untagged
@@ -82,3 +84,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &-6231651524661762402
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4016255525519897036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.017448585
+  m_Height: 0.05501341
+  m_Direction: 1
+  m_Center: {x: 9.313226e-10, y: 0.018294562, z: -0.0000000027939677}
+--- !u!114 &-961512332438883068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4016255525519897036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4074ac9bdb7a243a01c05381285175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
