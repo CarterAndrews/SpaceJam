@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 855.38574, g: 1193.5762, b: 1895.1914, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -77.5}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -128}
+  m_SizeDelta: {x: 113.43, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &29967173
 MonoBehaviour:
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2.32
 --- !u!222 &29967175
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -481,8 +481,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.4699998}
+  m_SizeDelta: {x: 0, y: -4.9400005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &390619437
 MonoBehaviour:
@@ -504,10 +504,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back
+  m_text: BACK
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
+  m_sharedMaterial: {fileID: -7680962103764369800, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -638,7 +638,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: THE LAST SNOWFLAKE
+  m_text: 'BARRY
+
+    NICOLE
+
+    JACOB
+
+    CARTER
+
+    KAIN'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
   m_sharedMaterial: {fileID: -7680962103764369800, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
