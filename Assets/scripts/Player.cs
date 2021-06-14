@@ -39,6 +39,10 @@ public class Player : MonoBehaviour
     Vector3 camForward;
     Vector3 camRight;
     // Start is called before the first frame update
+    public void destoryGun()
+    {
+        Destroy(m_gun.gameObject);
+    }
     void Start()
     {
         m_animVelocity = Vector2.zero;
