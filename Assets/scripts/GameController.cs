@@ -40,10 +40,6 @@ public class GameController : MonoBehaviour
     }
     private void OnPlayerJoined(PlayerInput playerInput)
     {
-        if (SceneManager.GetActiveScene().name == "menu")
-        {
-            SceneNavigator.GoToScene("join");
-        }
         players.Add(playerInput);
         playerInput.GetComponent<Player>().changeColor(playerColors[players.Count-1]);
         playerInput.gameObject.name = "player" + players.Count.ToString();
