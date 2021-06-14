@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 855.38574, g: 1193.5762, b: 1895.1914, a: 1}
+  m_IndirectSpecularColor: {r: 855.4448, g: 1193.7109, b: 1895.3691, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YETI VS BEANS
+  m_text: YETI OR NOT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
   m_sharedMaterial: {fileID: -7680962103764369800, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
@@ -748,8 +748,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 14}
-  m_SizeDelta: {x: 307.9, y: 62.6}
+  m_AnchoredPosition: {x: 8.5174, y: 14}
+  m_SizeDelta: {x: 324.9347, y: 62.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493187939
 MonoBehaviour:
@@ -771,7 +771,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: THE LAST SNOWFLAKE
+  m_text: A BARNACLE + TEAM GAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
   m_sharedMaterial: {fileID: -7680962103764369800, guid: f1126fa8bf9d95d41859184693d681d9, type: 2}
