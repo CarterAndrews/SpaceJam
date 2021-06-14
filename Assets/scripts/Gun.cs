@@ -171,7 +171,7 @@ public class Gun : MonoBehaviour
 
         float rayDist = 99;
         GameObject hitObject = null;
-        if ((rayDist = GetClosestHitDist(ref hitObject)) < 200)
+        if ((rayDist = GetClosestHitDist(ref hitObject)) < 80)
         {
             Player otherPlayer = hitObject.GetComponent<Player>();
             if(null != otherPlayer && otherPlayer.isEvil)
